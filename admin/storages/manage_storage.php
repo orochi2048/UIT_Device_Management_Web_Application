@@ -23,20 +23,16 @@ if(isset($_GET['id'])){
     <form action="" id="storage-form">
         <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
         <div class="form-group">
-            <label for="name" class="control-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Storage Name" value ="<?php echo isset($name) ? $name : '' ?>" required>
+            <label for="name" class="control-label">Tên thiết bị</label>
+            <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Tên thiết bị" value ="<?php echo isset($name) ? $name : '' ?>" required>
         </div>
         <div class="form-group">
-            <label for="cost" class="control-label">Cost <small>(a day)</small></label>
-            <input type="text" name="cost" id="cost" class="form-control form-control-border text-right" placeholder="Storage Cost" value ="<?php echo isset($cost) ? $cost : 0 ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="description" class="control-label">Description</label>
-            <textarea rows="3" name="description" id="description" class="form-control form-control-border summernote" placeholder="Write the storage description here." required><?php echo isset($description) ? $description : '' ?></textarea>
+            <label for="description" class="control-label">Mô tả</label>
+            <textarea rows="3" name="description" id="description" class="form-control form-control-border summernote" placeholder="Điền mô tả thiết bị tại đây." required><?php echo isset($description) ? $description : '' ?></textarea>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <label for="img" class="control-label text-muted">Choose Image</label>
+                <label for="img" class="control-label text-muted">Chọn hình đại diện</label>
                 <input type="file" id="img" name="img" class="form-control form-control-border" accept="image/png,image/jpeg" onchange="displayImg(this,$(this))">
             </div>
         </div>
@@ -48,10 +44,11 @@ if(isset($_GET['id'])){
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="control-label">Status</label>
+            <label for="" class="control-label">Trạng thái</label>
             <select name="status" id="status" class="form-control form-control-border" required>
-                <option value="1" <?= isset($status) && $status == 1 ? "selected" :"" ?>>Available</option>
-                <option value="0" <?= isset($status) && $status == 0 ? "selected" :"" ?>>Unavailable</option>
+                <option value="2" <?= isset($status) && $status == 2 ? "selected" :"" ?>>Đã mượn</option>
+                <option value="1" <?= isset($status) && $status == 1 ? "selected" :"" ?>>Có sẵn</option>
+                <option value="0" <?= isset($status) && $status == 0 ? "selected" :"" ?>>Bị hỏng</option>
             </select>
         </div>
     </form>

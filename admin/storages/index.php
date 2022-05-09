@@ -8,9 +8,9 @@
 </style>
 <div class="card card-outline card-primary rounded-0 shadow">
 	<div class="card-header">
-		<h3 class="card-title">List of Storages</h3>
+		<h3 class="card-title">Danh sách thiết bị</h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add New Storage</a>
+			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Thêm thiết bị mới</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -22,19 +22,17 @@
 					<col width="20%">
 					<col width="15%">
 					<col width="25%">
-					<col width="15%">
 					<col width="10%">
 					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
-						<th>Images</th>
-						<th>Name</th>
-						<th>Cost</th>
-						<th>Status</th>
-						<th>Action</th>
+						<th>Ngày tạo</th>
+						<th>Hình minh họa</th>
+						<th>Tên</th>
+						<th>Trạng thái</th>
+						<th>Hành động</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,26 +52,29 @@
 							<td class="text-center">
                                 <?php
                                     switch($row['status']){
-                                        case '1':
-                                            echo "<span class='badge badge-success badge-pill'>Available</span>";
-                                            break;
-                                        case '0':
-                                            echo "<span class='badge badge-warning badge-pill'>Unavailable</span>";
-                                            break;
+                                        case '2':
+											echo "<span class='badge badge-secondary badge-pill'>Đã mượn</span>";
+											break;
+										case '1':
+											echo "<span class='badge badge-success badge-pill'>Có sẵn</span>";
+											break;
+										case '0':
+											echo "<span class='badge badge-danger badge-pill'>Bị hỏng</span>";
+											break;
                                     }
                                 ?>
                             </td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
+				                  		Hành động
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-eye text-dark"></span> View</a>
+				                    <a class="dropdown-item view_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-eye text-dark"></span> Xem</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
+				                    <a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Sửa</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Xóa</a>
 				                  </div>
 							</td>
 						</tr>
@@ -87,16 +88,16 @@
 <script>
 	$(document).ready(function(){
         $('#create_new').click(function(){
-			uni_modal("Add New Storage/Program","storages/manage_storage.php", 'mid-large')
+			uni_modal("Thêm thiết bị mới","storages/manage_storage.php", 'mid-large')
 		})
         $('.edit_data').click(function(){
-			uni_modal("Update Storage Details","storages/manage_storage.php?id="+$(this).attr('data-id'), 'mid-large')
+			uni_modal("Cập nhật thông tin thiết bị","storages/manage_storage.php?id="+$(this).attr('data-id'), 'mid-large')
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Storage permanently?","delete_storage",[$(this).attr('data-id')])
+			_conf("Bạn có chắc muốn xóa thitế bị?","delete_storage",[$(this).attr('data-id')])
 		})
 		$('.view_data').click(function(){
-			uni_modal("Storage Details","storages/view_storage.php?id="+$(this).attr('data-id'), 'mid-large')
+			uni_modal("Thông tin thiết bị","storages/view_storage.php?id="+$(this).attr('data-id'), 'mid-large')
 		})
 		$('.table td, .table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({

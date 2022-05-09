@@ -1,0 +1,5 @@
+{
+    "require": {
+        "aspose/barcode": "^22.4"
+    }
+}

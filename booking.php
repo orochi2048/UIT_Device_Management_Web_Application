@@ -1,6 +1,6 @@
 <div class="content py-3">
     <div class="container-fluid">
-        <h3 class="text-center"><b>Application Form</b></h3>
+        <h3 class="text-center"><b>Form đăng ký mượn thiết bị</b></h3>
         <hr class="bg-navy">
         <?php if($_settings->chk_flashdata('pop_msg')): ?>
             <div class="alert alert-success">
@@ -18,69 +18,59 @@
                     <form action="" id="booking-form">
                         <input type="hidden" name="id" value="">
                         <fieldset>
-                            <legend class="text-info">Client's Information</legend>
+                            <legend class="text-info">Thông tin người mượn</legend>
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <input type="text" id="firstname" name="firstname" autofocus class="form-control form-control-sm form-control-border" placeholder="Firstname" required>
-                                    <small class="text-muted px-4">First Name</small>
+                                    <small class="text-muted px-4">Họ và tên</small>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="middlename" name="middlename" class="form-control form-control-sm form-control-border" placeholder="(optional)">
-                                    <small class="text-muted px-4">Middle Name</small>
+                                    <input type="text" id="MSSV_placeholder" name="MSSV_placeholder" autofocus class="form-control form-control-sm form-control-border" placeholder="MSSV_placeholder" required>
+                                    <small class="text-muted px-4">Mã số sinh viên</small>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="lastname" name="lastname" class="form-control form-control-sm form-control-border" placeholder="Last Name" required>
-                                    <small class="text-muted px-4">Last Name</small>
+                                    <input type="text" id="ClassID_placeholder" name="ClassID_placeholder" autofocus class="form-control form-control-sm form-control-border" placeholder="ClassID_placeholder" required>
+                                    <small class="text-muted px-4">Mã lớp</small>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-md-4 form-group">
                                     <div class="row">
                                         <div class="form-group col-md-12">
-                                            <small class="text-muted">Gender</small>
+                                            <small class="text-muted">Giới tính</small>
                                         </div>
                                         <div class="form-group col-auto">
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="genderMale" name="gender" value="Male" required checked>
-                                                <label for="genderMale" class="custom-control-label">Male</label>
+                                                <label for="genderMale" class="custom-control-label">Nam</label>
                                             </div>
                                         </div>
                                         <div class="form-group col-auto">
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="genderFemale" name="gender" value="Female">
-                                                <label for="genderFemale" class="custom-control-label">Female</label>
+                                                <label for="genderFemale" class="custom-control-label">Nữ</label>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <input type="date" id="dob" name="dob" class="form-control form-control-sm form-control-border" required>
-                                    <small class="text-muted px-4">Date of Birthday</small>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <input type="text" id="contact" name="contact" class="form-control form-control-sm form-control-border" placeholder="Contact" required>
-                                    <small class="text-muted px-4">Contact #</small>
+                                    <small class="text-muted px-4">Số điện thoại</small>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <input type="text" id="email" name="email" class="form-control form-control-sm form-control-border" placeholder="Email" required>
                                     <small class="text-muted px-4">Email</small>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <small class="text-muted">Address</small>
-                                    <textarea name="address" id="address" rows="3" style="resize:none" class="form-control form-control-sm rounded-0" placeholder="Here Street, There City, Anywhere State, 2306"></textarea>
-                                </div>
-                            </div>
                         </fieldset>
                         <fieldset>
-                            <legend class="text-info">Booking Information</legend>
+                            <legend class="text-info">Thông tin mượn thiết bị</legend>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <small class="text-muted px-4">Cold Storage</small>
-                                    <select name="storage_id" id="storage_id" class="form-control form-control-border select2" data-placeholder="Please Select Storage Here" required>
+                                    <small class="text-muted px-4">Loại thiết bị</small>
+                                    <select name="storage_id" id="storage_id" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn loại thiết bị tại đây" required>
                                         <option value="" disabled selected></option>
                                         <?php 
                                         $storage_arr = [];
@@ -94,25 +84,25 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <small class="text-muted px-4">Type</small>
-                                    <select name="type" id="type" class="form-control form-control-border select2" data-placeholder="Please Select Type Here" required>
+                                    <small class="text-muted px-4">Tên thiết bị (Ex: Mẫu mã)</small>
+                                    <select name="type" id="type" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn mẫu mã tại đây" required>
                                         <option value="" disabled selected></option>
-                                        <option>Fruits</option>
-                                        <option>Grains</option>
-                                        <option>Pulses</option>
-                                        <option>Vegetables</option>
-                                        <option>Others</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <input type="date" id="date_from" name="date_from" class="form-control form-control-sm form-control-border" placeholder="Date From" required>
-                                    <small class="text-muted px-4">Date From</small>
+                                    <input type="date" id="date_from" name="date_from" class="form-control form-control-sm form-control-border" placeholder="Ngày mượn từ" required>
+                                    <small class="text-muted px-4">Ngày mượn từ</small>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="date" id="date_to" name="date_to" class="form-control form-control-sm form-control-border" placeholder="Date To" required>
-                                    <small class="text-muted px-4">Date To</small>
+                                    <input type="date" id="date_to" name="date_to" class="form-control form-control-sm form-control-border" placeholder="Đến" required>
+                                    <small class="text-muted px-4">Đến</small>
                                 </div>
                             </div>
                             <hr class="">
@@ -123,34 +113,26 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <th>Cold Storage Description </th>
+                                        <th>Mô tả </th>
                                         <td id="storage-description">-----</td>
                                     </tr>
                                     <tr>
-                                        <th>Cold Storage Cost <small>(per day)</small><input type="hidden" name="cost"></th>
-                                        <td id="storage-cost" class="text-right">--</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Days of Storing <input type="hidden" name="storing_days"></th>
+                                        <th>Số ngày mượn <input type="hidden" name="storing_days"></th>
                                         <td id="storage-days" class="text-right">--</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total Payable Amount <input type="hidden" name="amount"></th>
-                                        <td id="storage-amount" class="text-right">----</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <small class="text-muted">Other Information</small>
-                                    <textarea name="other_info" id="other_info" rows="3" style="resize:none" class="form-control form-control-sm rounded-0" placeholder="Write the other information if any here."></textarea>
+                                    <small class="text-muted">Thông tin khác</small>
+                                    <textarea name="other_info" id="other_info" rows="3" style="resize:none" class="form-control form-control-sm rounded-0" placeholder="Điền thông tin khác (nếu có) tại đây."></textarea>
                                 </div>
                             </div>
                         </fieldset>
                         <hr class="bg-navy">
                         <center>
-                            <button class="btn btn-sm bg-primary btn-flat mx-2 col-3">Submit Booking</button>
-                            <a class="btn btn-sm btn-light border btn-flat mx-2 col-3" href="./">Cancel</a>
+                            <button class="btn btn-sm bg-primary btn-flat mx-2 col-3">Nộp form</button>
+                            <a class="btn btn-sm btn-light border btn-flat mx-2 col-3" href="./">Hủy</a>
                         </center>
                     </form>
                 </div>

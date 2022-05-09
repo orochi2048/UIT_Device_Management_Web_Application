@@ -27,7 +27,7 @@
                       <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                          Dashboard
+                          Trang chủ
                         </p>
                       </a>
                     </li>
@@ -35,7 +35,7 @@
                       <a href="<?php echo base_url ?>admin/?page=bookings" class="nav-link nav-bookings">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                          Booking List
+                          Danh sách yêu cầu
                         </p>
                       </a>
                     </li>
@@ -43,17 +43,17 @@
                       <a href="<?php echo base_url ?>admin/?page=inquiries" class="nav-link nav-inquiries">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
-                          Inquiries
+                          Phản hồi
                         </p>
                       </a>
                     </li>
                     <?php if($_settings->userdata('type') == 1): ?>
-                    <li class="nav-header">Maintenance</li>
+                    <li class="nav-header">Bảo trì</li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=storages" class="nav-link nav-storages">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          Storage List
+                          Danh sách thiết bị
                         </p>
                       </a>
                     </li>
@@ -61,7 +61,7 @@
                       <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
-                          User List
+                          Danh sách người dùng
                         </p>
                       </a>
                     </li>
@@ -69,7 +69,7 @@
                       <a href="<?php echo base_url ?>admin/?page=system_info" class="nav-link nav-system_info">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
-                          Settings
+                          Cài đặt
                         </p>
                       </a>
                     </li>

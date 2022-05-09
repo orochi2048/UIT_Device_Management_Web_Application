@@ -19,7 +19,7 @@ if(isset($_GET['id'])){
 <div class="content py-3">
     <div class="card card-outline card-dark rounded-0">
         <div class="card-header rounded-0">
-            <h5 class="card-title text-primary">Booking Details of <?= isset($book_code) ? $book_code : "" ?></h5>
+            <h5 class="card-title text-primary">Thông tin mượn thiết bị với mã đặt <?= isset($book_code) ? $book_code : "" ?></h5>
         </div>
         <div class="card-body">
             <div class="container-fluid">
@@ -33,37 +33,37 @@ if(isset($_GET['id'])){
                             object-position:center center;
                         }
                     </style>
-                    <div class="text-info">Booking Code</div>
+                    <div class="text-info">Mã đặt</div>
                     <h4 class=""><b><?= isset($book_code) ? $book_code : "" ?></b></h4>
                     <hr class="">
                     <fieldset>
-                        <legend class="text-info">Client's Information</legend>
+                        <legend class="text-info">Thông tin người mượn</legend>
                         <div class="row">
                             <div class="col-md-6">
                                 <dl>
-                                    <dt class="text-muted">Full Name</dt>
+                                    <dt class="text-muted">Họ và tên</dt>
                                     <dd class='pl-4 fs-4 fw-bold'><?= isset($client_name) ? $client_name : '' ?></dd>
-                                    <dt class="text-muted">Gender</dt>
+                                    <dt class="text-muted">Mã số sinh viên</dt>
+                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($MSSV_placeholder) ? $MSSV_placeholder : '' ?></dd>
+                                    <dt class="text-muted">Mã lớp</dt>
+                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($ClassID_placeholder) ? $ClassID_placeholder : '' ?></dd>
+                                    <dt class="text-muted">Giới tính</dt>
                                     <dd class='pl-4 fs-4 fw-bold'><?= isset($gender) ? $gender : '' ?></dd>
-                                    <dt class="text-muted">Birthday</dt>
-                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($child_dob) ? date("M d, Y",strtotime($child_dob)) : '' ?></dd>
                                 </dl>
                             </div>
                             <div class="col-md-6">
                                 <dl>
-                                    <dt class="text-muted">Contact #</dt>
+                                    <dt class="text-muted">Số điện thoại</dt>
                                     <dd class='pl-4 fs-4 fw-bold'><?= isset($contact) ? $contact : '' ?></dd>
                                     <dt class="text-muted">Email</dt>
                                     <dd class='pl-4 fs-4 fw-bold'><?= isset($email) ? $email : '' ?></dd>
-                                    <dt class="text-muted">Address</dt>
-                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($address) ? $address : '' ?></dd>
                                 </dl>
                             </div>
                         </div>
                     </fieldset>
                     <hr class="">
                     <fieldset>
-                        <legend class="text-info">Booking Information</legend>
+                        <legend class="text-info">Thông tin mượn thiết bị</legend>
                         <hr>
                         <table class="table table-bordered">
                             <colgroup>
@@ -72,7 +72,7 @@ if(isset($_GET['id'])){
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <th colspan="2" class="text-center"><b>Cold Storage</b></th>
+                                    <th colspan="2" class="text-center"><b>Thiết bị</b></th>
                                 </tr>
                                 <tr>
                                     <th colspan='2' class="text-center">
@@ -80,64 +80,57 @@ if(isset($_GET['id'])){
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Tên</th>
                                     <td><?= isset($storage) ? $storage : "" ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Description</th>
+                                    <th>Mô tả</th>
                                     <td><?= isset($storage_description) ? html_entity_decode($storage_description) : "" ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Cost</th>
-                                    <td class="text-right"><?= isset($cost) ? number_format($cost) : "" ?></td>
+                                    <th colspan="2" class="text-center"><b>Thời gian mượn</b></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2" class="text-center"><b>Schedule</b></th>
-                                </tr>
-                                <tr>
-                                    <th>Date From</th>
+                                    <th>Từ ngày</th>
                                     <td class="text-right"><?= isset($date_from) ? date("mm-d-Y",strtotime($date_from)) : "" ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Date To</th>
+                                    <th>Đến ngày</th>
                                     <td class="text-right"><?= isset($date_to) ? date("mm-d-Y",strtotime($date_to)) : "" ?></td>
                                 </tr> 
                                 <tr>
-                                    <th>Days</th>
+                                    <th>Số ngày</th>
                                     <td class="text-right"><?= isset($storing_days) ? number_format($storing_days) : "" ?></td>
                                 </tr> 
-                                <tr>
-                                    <th colspan="2" class="text-center"><b>Payable Amount</b></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2" class="text-center"><b><?= isset($amount) ? number_format($amount,2) : 0.00 ?></b></th>
-                                </tr>
                             </tbody>
                         </table>
                     </fieldset>
                     <hr class="">
-                    <div class="text-muted">Status</div>
+                    <div class="text-muted">Trạng thái</div>
                     <div class="pl-4">
                         <?php
                             switch($status){
+                                case '2':
+                                    echo "<span class='badge badge-danger badge-pill'>Đã hủy</span>";
+                                    break;
                                 case '1':
-                                    echo "<span class='badge badge-primary badge-pill'>Confirmed</span>";
+                                    echo "<span class='badge badge-success badge-pill'>Đã duyệt</span>";
                                     break;
                                 case '0':
-                                    echo "<span class='badge badge-secondary badge-pill'>Pending</span>";
+                                    echo "<span class='badge badge-secondary badge-pill'>Chưa duyệt</span>";
                                     break;
                             }
                         ?>
                     </div>
                     <?php if(isset($remarks)): ?>
-                    <div class="text-muted">Remarks</div>
+                    <div class="text-muted">Lý do</div>
                     <p class="pl-4"><?= $remarks ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="rounded-0 text-center">
-                        <button class="btn btn-sm btn-success btn-flat" type="button" id="print"><i class="fa fa-print"></i> Print</button>
-                        <button class="btn btn-sm btn-primary btn-flat" type="button" id="update_status"><i class="fa fa-edit"></i> Update Status</button>
-                        <a class="btn btn-light border btn-flat btn-sm" href="./?page=bookings" ><i class="fa fa-angle-left"></i> Back to List</a>
+                        <button class="btn btn-sm btn-success btn-flat" type="button" id="print"><i class="fa fa-print"></i> In</button>
+                        <button class="btn btn-sm btn-primary btn-flat" type="button" id="update_status"><i class="fa fa-edit"></i> Cập nhật trạng thái</button>
+                        <a class="btn btn-light border btn-flat btn-sm" href="./?page=bookings" ><i class="fa fa-angle-left"></i> Trở về danh sách</a>
                 </div>
             </div>
         </div>
@@ -146,7 +139,7 @@ if(isset($_GET['id'])){
 <script>
     $(function(){
         $('#update_status').click(function(){
-            uni_modal("Update <b><?= isset($book_code) ? $book_code : "" ?>\'s</b> Status","bookings/update_status.php?id=<?= isset($id) ? $id : "" ?>","mid-large")
+            uni_modal("Cập nhật <b><?= isset($book_code) ? $book_code : "" ?>\'s</b> Trạng thái","bookings/update_status.php?id=<?= isset($id) ? $id : "" ?>","mid-large")
         })
         $('#print').click(function(){
             var _h = $("head").clone()
@@ -158,9 +151,9 @@ if(isset($_GET['id'])){
                     _h.append($(this).clone())
                 }
             })
-            _h.find('title').text("booking's Details - Print View")
+            _h.find('title').text("Thông tin mượn thiết bị - Print View")
             _p.prepend("<hr class='border-navy '>")
-            _p.prepend("<div class='mx-5 py-4'><h1 class='text-center'>Booking Details</h1>"
+            _p.prepend("<div class='mx-5 py-4'><h1 class='text-center'>Thông tin mượn thiết bị</h1>"
                         +"<h5 class='text-center'><?= isset($book_code) ? $book_code : "" ?></h5></div>")
             _p.prepend("<img src='<?= validate_image($_settings->info('logo')) ?>' id='print-logo' />")
             el.append(_h)

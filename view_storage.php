@@ -28,24 +28,25 @@ if(isset($_GET['id'])){
         <dd class="text-center">
             <img src="<?= validate_image($thumbnail_path ? $thumbnail_path : "") ?>" alt="Thumbnail Path" class="img-thumbnail bg-gradient-black" id="thumb-path">
         </dd>
-        <dt class="text-muted">Name</dt>
+        <dt class="text-muted">Tên</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($name) ? $name : '' ?></dd>
-        <dt class="text-muted">Cost <i class="fa fa-tags"></i></dt>
-        <dd class='pl-4 fs-4 fw-bold'><?= isset($cost) ? number_format($cost,2) : '' ?></dd>
-        <dt class="text-muted">Description</dt>
+        <dt class="text-muted">Mô tả</dt>
         <dd class='pl-4'>
             <p class=""><small><?= isset($description) ? html_entity_decode($description) : '' ?></small></p>
         </dd>
-        <dt class="text-muted">Status</dt>
+        <dt class="text-muted">Trạng thái</dt>
         <dd class='pl-4'>
             <?php
             if(isset($status)):
                 switch($status){
+                    case '2':
+                        echo "<span class='badge badge-secondary badge-pill'>Đã mượn</span>";
+                        break;
                     case '1':
-                        echo "<span class='badge badge-success badge-pill'>Availble</span>";
+                        echo "<span class='badge badge-success badge-pill'>Có sẵn</span>";
                         break;
                     case '0':
-                        echo "<span class='badge badge-warning badge-pill'>Unavailable</span>";
+                        echo "<span class='badge badge-danger badge-pill'>Bị hỏng</span>";
                         break;
                 }
             endif;
@@ -53,6 +54,6 @@ if(isset($_GET['id'])){
         </dd>
     </dl>
     <div class="col-12 text-right">
-        <button class="btn btn-flat btn-sm btn-dark" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        <button class="btn btn-flat btn-sm btn-dark" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Đóng</button>
     </div>
 </div>

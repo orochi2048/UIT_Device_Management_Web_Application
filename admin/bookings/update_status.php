@@ -21,14 +21,15 @@ if(isset($_GET['id'])){
     <form action="" id="update_status_form">
         <input type="hidden" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : "" ?>">
         <div class="form-group">
-            <label for="status" class="control-label text-navy">Status</label>
+            <label for="status" class="control-label text-navy">Trạng thái</label>
             <select name="status" id="status" class="form-control form-control-border" required>
-                <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Pending</option>
-                <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Confirmed</option>
+                <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Chưa duyệt</option>
+                <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Đã duyệt</option>
+                <option value="2" <?= isset($status) && $status == 2 ? "selected" : "" ?>>Đã hủy</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="remarks" class="control-label text-navy">Remarks</label>
+            <label for="remarks" class="control-label text-navy">Lý do</label>
             <textarea name="remarks" id="remarks" rows="3" class="form-control form-control-sm rounded-0" style="resize:none" placeholder="Write your remarks here."><?= isset($remarks) ? $remarks : '' ?></textarea>
         </div>
     </form>

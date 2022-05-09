@@ -55,7 +55,7 @@
           <div id="header" class="shadow mb-4">
               <div class="d-flex justify-content-center h-100 w-100 align-items-center flex-column px-3">
                   <h1 class="w-100 text-center site-title px-5"><?php echo $_settings->info('name') ?></h1>
-                  <a href="./?page=booking" class="btn btn-lg btn-light rounded-pill w-25" id="enrollment"><b>Book Now</b></a>
+                  <a href="./?page=booking" class="btn btn-lg btn-light rounded-pill w-25" id="enrollment"><b>Form mượn thiết bị</b></a>
               </div>
           </div>
         <?php endif; ?>
@@ -80,14 +80,14 @@
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header rounded-0">
-        <h5 class="modal-title">Confirmation</h5>
+        <h5 class="modal-title">Xác nhận</h5>
       </div>
       <div class="modal-body rounded-0">
         <div id="delete_content"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='confirm' onclick="">Tiếp tục</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
       </div>
       </div>
     </div>
@@ -101,8 +101,8 @@
       <div class="modal-body rounded-0">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Lưu</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
       </div>
       </div>
     </div>

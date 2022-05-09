@@ -22,12 +22,12 @@
 </style>
 <div class="content py-3">
     <div class="container-fluid">
-        <h3 class="text-center"><b>Our Storages</b></h3>
+        <h3 class="text-center"><b>Danh sách thiết bị</b></h3>
         <hr class="bg-navy">
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="input-group mb-2">
-                    <input type="search" id="search" class="form-control form-control-border" placeholder="Search storage here...">
+                    <input type="search" id="search" class="form-control form-control-border" placeholder="Tìm kiếm thiết bị tại đây...">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-sm border-0 border-bottom btn-default">
                             <i class="fa fa-search"></i>
@@ -44,7 +44,7 @@
                 <a class="col storage-item text-decoration-none text-dark" href="javascript:void(0)" data-id="<?= $row['id'] ?>">
                     <div class="card rounded-0 shadow">
                         <div class="text-center overflow-hidden storage-image-field">
-                            <img class="img-top bg-gradient-dark border-info storage-image" src="<?php echo validate_image($row['thumbnail_path']) ?>" alt="Storage Image">
+                            <img class="img-top bg-gradient-dark border-info storage-image" src="<?php echo validate_image($row['thumbnail_path']) ?>" alt="Hình ảnh thiết bị">
                         </div>
                         <div class="card-body rounded-0">
                             <h4 class="text-center"><b><?= ($row['name']) ?></b></h4>
@@ -54,9 +54,9 @@
                 </a>
             <?php endwhile; ?>
             <?php if($storages->num_rows < 1): ?>
-                <center><span class="text-muted">No Storage Listed Yet.</span></center>
+                <center><span class="text-muted">Chưa có thiết bị được liệt kê.</span></center>
             <?php endif; ?>
-                <div id="no_result" style="display:none"><center><span class="text-muted">No Result.</span></center></div>
+                <div id="no_result" style="display:none"><center><span class="text-muted">Không có kết quả.</span></center></div>
             </div>
         </div>
     </div>
@@ -80,8 +80,7 @@
             })
         })
         $('.storage-item').click(function(){
-            uni_modal("Storage's Details","view_storage.php?id="+$(this).attr('data-id'),'mid-large')
+            uni_modal("Thông tin thiết bị","view_storage.php?id="+$(this).attr('data-id'),'mid-large')
         })
     })
-    
 </script>

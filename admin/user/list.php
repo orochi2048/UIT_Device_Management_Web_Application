@@ -15,9 +15,9 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of System Users</h3>
+		<h3 class="card-title">Danh sách người dùng hệ thống</h3>
 		<div class="card-tools">
-			<a href="?page=user/manage_user" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="?page=user/manage_user" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Tạo mới</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -36,11 +36,11 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Avatar</th>
-						<th>Name</th>
-						<th>Username</th>
-						<th>User Type</th>
-						<th>Action</th>
+						<th>Hình đại diện</th>
+						<th>Tên</th>
+						<th>Tên người dùng</th>
+						<th>Loại người dùng</th>
+						<th>Hành động</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,17 +57,17 @@
 							<td ><p class="m-0"><?php echo ($row['type'] == 1 )? "Adminstrator" : "Staff" ?></p></td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
+				                  		Hành động
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="?page=user/manage_user&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
+				                    <a class="dropdown-item" href="?page=user/manage_user&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Sửa</a>
 				                    <div class="dropdown-divider"></div>
 									<?php if($row['status'] != 1): ?>
-				                    <a class="dropdown-item verify_user" href="javascript:void(0)" data-id="<?= $row['id'] ?>"  data-name="<?= $row['username'] ?>"><span class="fa fa-check text-primary"></span> Verify</a>
+				                    <a class="dropdown-item verify_user" href="javascript:void(0)" data-id="<?= $row['id'] ?>"  data-name="<?= $row['username'] ?>"><span class="fa fa-check text-primary"></span> Xác thực</a>
 				                    <div class="dropdown-divider"></div>
 									<?php endif; ?>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Xóa</a>
 				                  </div>
 							</td>
 						</tr>
@@ -81,12 +81,12 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this User permanently?","delete_user",[$(this).attr('data-id')])
+			_conf("Bạn có chắc muốn xóa người dùng này?","delete_user",[$(this).attr('data-id')])
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable();
 		$('.verify_user').click(function(){
-			_conf("Are you sure to verify <b>"+$(this).attr('data-name')+"<b/>?","verify_user",[$(this).attr('data-id')])
+			_conf("Bạn có chắc muốn xác thực <b>"+$(this).attr('data-name')+"<b/>?","verify_user",[$(this).attr('data-id')])
 		})
 	})
 	function delete_user($id){

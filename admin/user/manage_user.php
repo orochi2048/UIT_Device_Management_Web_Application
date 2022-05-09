@@ -19,36 +19,36 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 			<form action="" id="manage-user">	
 				<input type="hidden" name="id" value="<?php echo isset($meta['id']) ? $meta['id']: '' ?>">
 				<div class="form-group col-6">
-					<label for="name">First Name</label>
+					<label for="name">Tên</label>
 					<input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo isset($meta['firstname']) ? $meta['firstname']: '' ?>" required>
 				</div>
 				<div class="form-group col-6">
-					<label for="name">Last Name</label>
+					<label for="name">Họ</label>
 					<input type="text" name="lastname" id="lastname" class="form-control" value="<?php echo isset($meta['lastname']) ? $meta['lastname']: '' ?>" required>
 				</div>
 				<div class="form-group col-6">
-					<label for="username">Username</label>
+					<label for="username">Tên tài khoản</label>
 					<input type="text" name="username" id="username" class="form-control" value="<?php echo isset($meta['username']) ? $meta['username']: '' ?>" required  autocomplete="off">
 				</div>
 				<div class="form-group col-6">
-					<label for="password">Password</label>
+					<label for="password">Mật khẩu</label>
 					<input type="password" name="password" id="password" class="form-control" value="" autocomplete="off" <?php echo isset($meta['id']) ? "": 'required' ?>>
                     <?php if(isset($_GET['id'])): ?>
-					<small class="text-info"><i>Leave this blank if you dont want to change the password.</i></small>
+					<small class="text-info"><i>Để trống nếu bạn không muốn đổi mật khẩu.</i></small>
                     <?php endif; ?>
 				</div>
 				<div class="form-group col-6">
-					<label for="type">User Type</label>
+					<label for="type">Loại người dùng</label>
 					<select name="type" id="type" class="custom-select"  required>
-						<option value="1" <?php echo isset($meta['type']) && $meta['type'] == 1 ? 'selected': '' ?>>Administrator</option>
-						<option value="2" <?php echo isset($meta['type']) && $meta['type'] == 2 ? 'selected': '' ?>>Staff</option>
+						<option value="1" <?php echo isset($meta['type']) && $meta['type'] == 1 ? 'selected': '' ?>>Quản trị viên</option>
+						<option value="2" <?php echo isset($meta['type']) && $meta['type'] == 2 ? 'selected': '' ?>>Nhân viên</option>
 					</select>
 				</div>
 				<div class="form-group col-6">
-					<label for="" class="control-label">Avatar</label>
+					<label for="" class="control-label">Hình đại diện</label>
 					<div class="custom-file">
 		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img" onchange="displayImg(this,$(this))">
-		              <label class="custom-file-label" for="customFile">Choose file</label>
+		              <label class="custom-file-label" for="customFile">Chọn tập tin</label>
 		            </div>
 				</div>
 				<div class="form-group col-6 d-flex justify-content-center">
@@ -60,8 +60,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 	<div class="card-footer">
 			<div class="col-md-12">
 				<div class="row">
-					<button class="btn btn-sm btn-primary mr-2" form="manage-user">Save</button>
-					<a class="btn btn-sm btn-secondary" href="./?page=user/list">Cancel</a>
+					<button class="btn btn-sm btn-primary mr-2" form="manage-user">Lưu</button>
+					<a class="btn btn-sm btn-secondary" href="./?page=user/list">Hủy</a>
 				</div>
 			</div>
 		</div>
@@ -106,12 +106,11 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 				if(resp ==1){
 					location.href = './?page=user/list';
 				}else{
-					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')
+					$('#msg').html('<div class="alert alert-danger">Tên tài khoản đã tồn tại</div>')
 					$("html, body").animate({ scrollTop: 0 }, "fast");
 				}
                 end_loader()
 			}
 		})
 	})
-
 </script>

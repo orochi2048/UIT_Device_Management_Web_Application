@@ -23,20 +23,20 @@ if(isset($_GET['id'])){
     <div class="row">
         <div class="col-md-12">
             <dl>
-                <dt class="text-primary">Inquirer</dt>
+                <dt class="text-primary">Người gửi</dt>
                 <dd class="pl-4"><?= isset($fullname) ? $fullname : "" ?></dd>
                 <dt class="text-primary">Email</dt>
                 <dd class="pl-4"><?= isset($email) ? $email : "" ?></dd>
-                <dt class="text-primary">Contact #</dt>
+                <dt class="text-primary">Số điện thoại</dt>
                 <dd class="pl-4"><?= isset($contact) ? $contact : "" ?></dd>
-                <dt class="text-primary">Message</dt>
+                <dt class="text-primary">Phản hồi</dt>
                 <dd class="pl-4"><?= isset($message) ? $message : "" ?></dd>
             </dl>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <button class="btn btn-flat btn-sm btn-dark" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button class="btn btn-flat btn-sm btn-dark" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Đóng</button>
         </div>
     </div>
 </div>

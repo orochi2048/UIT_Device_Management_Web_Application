@@ -35,10 +35,10 @@
           <div>
             <?php if($_settings->userdata('id') > 0): ?>
               <span class="mx-2"><img src="<?= validate_image($_settings->userdata('avatar')) ?>" alt="User Avatar" id="student-img-avatar"></span>
-              <span class="mx-2">Howdy, <?= !empty($_settings->userdata('username')) ? $_settings->userdata('username') : "" ?></span>
+              <span class="mx-2">Xin chào, <?= !empty($_settings->userdata('username')) ? $_settings->userdata('username') : "" ?></span>
               <span class="mx-1"><a href="<?= base_url.'classes/Login.php?f=logout' ?>"><i class="fa fa-power-off"></i></a></span>
             <?php else: ?>
-              <a href="./admin" class="mx-2 text-dark">Admin login</a>
+              <a href="./admin" class="mx-2 text-dark">Trang đăng nhập cho quản trị viên</a>
             <?php endif; ?>
           </div>
         </div>
@@ -59,19 +59,19 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="./" class="nav-link <?= isset($page) && $page =='home' ? "active" : "" ?>">Home</a>
+                <a href="./" class="nav-link <?= isset($page) && $page =='home' ? "active" : "" ?>">Trang chủ</a>
               </li>
               <li class="nav-item">
-                <a href="./?page=storages" class="nav-link <?= isset($page) && $page =='storages' ? "active" : "" ?>">Storages</a>
+                <a href="./?page=storages" class="nav-link <?= isset($page) && $page =='storages' ? "active" : "" ?>">Thiết bị</a>
               </li>
               <li class="nav-item">
-                <a href="./?page=booking" class="nav-link <?= isset($page) && $page =='booking' ? "active" : "" ?>">Booking</a>
+                <a href="./?page=booking" class="nav-link <?= isset($page) && $page =='booking' ? "active" : "" ?>">Mượn thiết bị</a>
               </li>
               <li class="nav-item">
-                <a href="./?page=about" class="nav-link <?= isset($page) && $page =='about' ? "active" : "" ?>">About Us</a>
+                <a href="./?page=about" class="nav-link <?= isset($page) && $page =='about' ? "active" : "" ?>">Giới thiệu</a>
               </li>
               <li class="nav-item">
-                <a href="./?page=contact_us" class="nav-link <?= isset($page) && $page =='contact_us' ? "active" : "" ?>">Contact Us</a>
+                <a href="./?page=contact_us" class="nav-link <?= isset($page) && $page =='contact_us' ? "active" : "" ?>">Liên hệ</a>
               </li>
               <!-- <li class="nav-item">
                 <a href="#" class="nav-link">Contact</a>
@@ -80,13 +80,8 @@
               <li class="nav-item">
                 <a href="./?page=profile" class="nav-link <?= isset($page) && $page =='profile' ? "active" : "" ?>">Profile</a>
               </li>
-              <li class="nav-item">
-                <a href="./?page=submit-archive" class="nav-link <?= isset($page) && $page =='submit-archive' ? "active" : "" ?>">Submit Thesis/Capstone</a>
-              </li>
               <?php endif; ?>
             </ul>
-
-            
           </div>
           <!-- Right navbar links -->
           <div class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">

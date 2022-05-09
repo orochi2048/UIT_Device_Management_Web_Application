@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6fdfb6e95a5c1291bf574e5f83993847",
+    "packages": [
+        {
+            "name": "aspose/barcode",
+            "version": "22.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aspose-barcode/Aspose.BarCode-for-PHP-via-Java.git",
+                "reference": "fe0ace8bbee9efadae3b0455ad1e85fc0ccac50f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aspose-barcode/Aspose.BarCode-for-PHP-via-Java/zipball/fe0ace8bbee9efadae3b0455ad1e85fc0ccac50f",
+                "reference": "fe0ace8bbee9efadae3b0455ad1e85fc0ccac50f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "aspose\\barcode\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Aspose",
+                    "homepage": "https://products.aspose.com"
+                }
+            ],
+            "description": "A PHP library that allows developers to quickly and easily add barcode generation and recognition functionality to their PHP applications while using Aspose.Barcode for Java as core library and PHP-Java Bridge for communication.",
+            "homepage": "https://products.aspose.com/barcode/php-java",
+            "keywords": [
+                "BarCode API",
+                "Barcode PHP",
+                "PHP BarCode API",
+                "PHP via Java",
+                "aspose.barcode"
+            ],
+            "support": {
+                "issues": "https://github.com/aspose-barcode/Aspose.BarCode-for-PHP-via-Java/issues",
+                "source": "https://github.com/aspose-barcode/Aspose.BarCode-for-PHP-via-Java/tree/22.4.0"
+            },
+            "time": "2022-04-26T16:23:09+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

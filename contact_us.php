@@ -3,15 +3,15 @@
         <div class="col-md-5">
             <div class="card card-outline card-navy rounded-0 shadow">
                 <div class="card-header">
-                    <h4 class="card-title">Contact Information</h4>
+                    <h4 class="card-title">Thông tin liên hệ</h4>
                 </div>
                 <div class="card-body rounded-0">
                     <dl>
                         <dt class="text-muted"><i class="fa fa-envelope"></i> Email</dt>
                         <dd class="pr-4"><?= $_settings->info('email') ?></dd>
-                        <dt class="text-muted"><i class="fa fa-phone"></i> Contact #</dt>
+                        <dt class="text-muted"><i class="fa fa-phone"></i> Số điện thoại</dt>
                         <dd class="pr-4"><?= $_settings->info('contact') ?></dd>
-                        <dt class="text-muted"><i class="fa fa-map-marked-alt"></i> Location</dt>
+                        <dt class="text-muted"><i class="fa fa-map-marked-alt"></i> Địa chỉ</dt>
                         <dd class="pr-4"><?= $_settings->info('address') ?></dd>
                     </dl>
                 </div>
@@ -20,7 +20,7 @@
         <div class="col-md-7">
             <div class="card rounded-0 card-outline card-navy shadow" >
                 <div class="card-body rounded-0">
-                    <h2 class="text-center">Message Us</h2>
+                    <h2 class="text-center">Phản hồi</h2>
                     <center><hr class="bg-navy border-navy w-25 border-2"></center>
                     <?php if($_settings->chk_flashdata('pop_msg')): ?>
                         <div class="alert alert-success">
@@ -36,29 +36,29 @@
                         <input type="hidden" name="id">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control form-control-sm form-control-border" id="fullname" name="fullname" required placeholder="John Smith">
-                                <small class="px-3 text-muted">Full Name</small>
+                                <input type="text" class="form-control form-control-sm form-control-border" id="fullname" name="fullname" required placeholder="Ví dụ: Nguyễn Văn A">
+                                <small class="px-3 text-muted">Họ và tên</small>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control form-control-sm form-control-border" id="contact" name="contact" required placeholder="xxxxxxxxxxxxx">
-                                <small class="px-3 text-muted">Contact #</small>
+                                <input type="text" class="form-control form-control-sm form-control-border" id="contact" name="contact" required placeholder="Ví dụ: 0123456789">
+                                <small class="px-3 text-muted">Số điện thoại</small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="email" class="form-control form-control-sm form-control-border" id="email" name="email" required placeholder="xxxxxx@xxxxxx.xxx">
+                                <input type="email" class="form-control form-control-sm form-control-border" id="email" name="email" required placeholder="Ví dụ: abc@def.xyz">
                                 <small class="px-3 text-muted">Email</small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <small class="text-muted">Message</small>
-                                <textarea name="message" id="message" rows="4" class="form-control form-control-sm rounded-0" required placeholder="Write your message here"></textarea>
+                                <small class="text-muted"></small>
+                                <textarea name="message" id="message" rows="4" class="form-control form-control-sm rounded-0" required placeholder="Điền phản hồi của bạn tại đây"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12 text-center">
-                                <button class="btn btn-primary rounded-pill col-5">Send Message</button>
+                                <button class="btn btn-primary rounded-pill col-5">Gửi phản hồi</button>
                             </div>
                         </div>
                     </form>

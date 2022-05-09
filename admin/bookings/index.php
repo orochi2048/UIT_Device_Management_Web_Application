@@ -9,7 +9,7 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Booking</h3>
+		<h3 class="card-title">Danh sách yêu cầu mượn thiết bị</h3>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
@@ -27,12 +27,12 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
-						<th>Booking Code</th>
-						<th>Client's Name</th>
-						<th>Storage Name</th>
-						<th>Status</th>
-						<th>Action</th>
+						<th>Ngày tạo</th>
+						<th>Mã đặt</th>
+						<th>Tên người mượn</th>
+						<th>Tên thiết bị</th>
+						<th>Trạng thái</th>
+						<th>Hành động</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,26 +50,29 @@
 							<td class="text-center">
 								<?php
                                     switch($row['status']){
+										case '2':
+                                            echo "<span class='badge badge-danger badge-pill'>Đã hủy</span>";
+                                            break;
                                         case '1':
-                                            echo "<span class='badge badge-primary badge-pill'>Confirmed</span>";
+                                            echo "<span class='badge badge-success badge-pill'>Đã duyệt</span>";
                                             break;
                                         case '0':
-                                            echo "<span class='badge badge-secondary badge-pill'>Pending</span>";
+                                            echo "<span class='badge badge-secondary badge-pill'>Chờ duyệt</span>";
                                             break;
                                     }
                                 ?>
 							</td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
+				                  		Hành động
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="./?page=bookings/view_details&id=<?php echo $row['id'] ?>" data-id=""><span class="fa fa-window-restore text-gray"></span> View</a>
+				                    <a class="dropdown-item" href="./?page=bookings/view_details&id=<?php echo $row['id'] ?>" data-id=""><span class="fa fa-window-restore text-gray"></span> Xem</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item update_status" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>" data-status="<?php echo $row['status'] ?>"  data-code="<?php echo $row['book_code'] ?>"><span class="fa fa-check text-dark"></span> Update Status</a>
+				                    <a class="dropdown-item update_status" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>" data-status="<?php echo $row['status'] ?>"  data-code="<?php echo $row['book_code'] ?>"><span class="fa fa-check text-dark"></span> Cập nhật trạng thái</a>
 									<div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>" data-code="<?php echo $row['book_code'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>" data-code="<?php echo $row['book_code'] ?>"><span class="fa fa-trash text-danger"></span> Xóa</a>
 				                  </div>
 							</td>
 						</tr>
@@ -83,13 +86,13 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete <b>"+$(this).attr('data-code')+"\'s</b> from booking list permanently?","delete_booking",[$(this).attr('data-id')])
+			_conf("Bạn có chắc muốn xóa <b>"+$(this).attr('data-code')+"\'s</b> từ danh sách yêu cầu mượn?","delete_booking",[$(this).attr('data-id')])
 		})
 		$('.update_status').click(function(){
-            uni_modal("Update <b>"+$(this).attr('data-code')+"\'s</b> Status","bookings/update_status.php?id="+$(this).attr('data-id'),"mid-large")
+            uni_modal("Cập nhật <b>"+$(this).attr('data-code')+"\'s</b> Trạng thái","bookings/update_status.php?id="+$(this).attr('data-id'),"mid-large")
         })
 		$('.view_details').click(function(){
-			uni_modal("booking Details", "booking/view_details.php?id="+$(this).attr('data-id'),'large')
+			uni_modal("Thông tin mượn thiết bị", "booking/view_details.php?id="+$(this).attr('data-id'),'large')
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({

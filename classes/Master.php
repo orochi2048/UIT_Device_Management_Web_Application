@@ -40,16 +40,16 @@ Class Master extends DBConnection {
 		$check = $this->conn->query("SELECT * FROM `storage_list` where `name`='{$name}' ".($id > 0 ? " and id != '{$id}'" : ""))->num_rows;
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Storage Name Already Exists.";
+			$resp['msg'] = "Tên thiết bị đã tồn tại.";
 		}else{
 			$save = $this->conn->query($sql);
 			if($save){
 				$sid = !empty($id) ? $id : $this->conn->insert_id;
 				$resp['status'] = 'success';
 				if(empty($id))
-					$resp['msg'] = "Storage details successfully added.";
+					$resp['msg'] = "Thiết bị được thêm thành công.";
 				else
-					$resp['msg'] = "Storage details has been updated successfully.";
+					$resp['msg'] = "Thông tin thiết bị được cập nhật thành công.";
 
 				if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
 					$fname = 'uploads/storages/'.$sid.'.png';
@@ -58,7 +58,7 @@ Class Master extends DBConnection {
 					$type = mime_content_type($upload);
 					$allowed = array('image/png','image/jpeg');
 					if(!in_array($type,$allowed)){
-						$resp['msg'].=" But Image failed to upload due to invalid file type.";
+						$resp['msg'].="Định dạng hình ảnh không hợp lệ.";
 					}else{
 						$new_height = 500; 
 						$new_width = 600;  
@@ -79,7 +79,7 @@ Class Master extends DBConnection {
 								$this->conn->query("UPDATE `storage_list` set thumbnail_path = CONCAT('{$fname}','?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$sid}' ");
 							}
 						}else{
-						$resp['msg'].=" But Image failed to upload due to unkown reason.";
+						$resp['msg'].="Không thể đăng hình ảnh lên.";
 						}
 					}
 				}
@@ -98,7 +98,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `storage_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Storage has been deleted successfully.");
+			$this->settings->set_flashdata('success',"Thiết bị đã bị xóa.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -144,9 +144,9 @@ Class Master extends DBConnection {
 			$eid = !empty($id) ? $id : $this->conn->insert_id;
 			$resp['status'] = 'success';
 			if(empty($id))
-				$resp['msg'] = "Booking Details has successfully submitted. Your Booking Code is <b>{$book_code}</b>.";
+				$resp['msg'] = "Yêu cầu mượn thiết bị đã được gửi. Mã yêu cầu của bạn là <b>{$book_code}</b>.";
 			else
-				$resp['msg'] = "Booking details has been updated successfully.";
+				$resp['msg'] = "Yêu cầu mượn thiết bị đã được cập nhật.";
 				$data = "";
 				foreach($_POST as $k =>$v){
 					if(!in_array($k,array('id','book_code','client_name','amount','date_from','date_to','storage_id','status'))){
@@ -184,7 +184,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `booking_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Booking has been deleted successfully.");
+			$this->settings->set_flashdata('success',"Yêu cầu mượn đã bị xóa.");
 			$this->conn->query("DELETE FROM `booking_details` FROM where booking_id = '{$id}'");
 		}else{
 			$resp['status'] = 'failed';
@@ -215,9 +215,9 @@ Class Master extends DBConnection {
 			$eid = !empty($id) ? $id : $this->conn->insert_id;
 			$resp['status'] = 'success';
 			if(empty($id))
-				$resp['msg'] = "Your message has successfully sent.";
+				$resp['msg'] = "Phản hồi của bạn đã được gửi.";
 			else
-				$resp['msg'] = "Message details has been updated successfully.";
+				$resp['msg'] = "Phản hồi của bạn đã được cập nhật.";
 		}else{
 			$resp['status'] = 'failed';
 			$resp['msg'] = "An error occured.";
@@ -234,7 +234,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `message_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Message has been deleted successfully.");
+			$this->settings->set_flashdata('success',"Phản hồi đã bị xóa.");
 
 		}else{
 			$resp['status'] = 'failed';
@@ -248,7 +248,7 @@ Class Master extends DBConnection {
 		$update = $this->conn->query("UPDATE `booking_list` set status  = '{$status}' where id = '{$id}'");
 		if($update){
 			$resp['status'] = 'success';
-			$resp['msg'] = "Booking Status has successfully updated.";
+			$resp['msg'] = "Trạng thái của yêu cầu đã được cập nhật.";
 			$this->conn->query("DELETE FROM `booking_details` where booking_id = '{$id}' and meta_field='remarks' ");
 			$this->conn->query("INSERT `booking_details` set booking_id = '{$id}', meta_field='remarks', meta_value='{$remarks}' ");
 		}else{

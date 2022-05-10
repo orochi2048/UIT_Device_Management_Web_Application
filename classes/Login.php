@@ -13,7 +13,7 @@ class Login extends DBConnection {
 		parent::__destruct();
 	}
 	public function index(){
-		echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
+		echo "<h1>Truy cập bị từ chối</h1> <a href='".base_url."'>Quay lại.</a>";
 	}
 	public function login(){
 		extract($_POST);
@@ -57,12 +57,12 @@ class Login extends DBConnection {
 				$resp['status'] = 'success';
 			}else{
 				$resp['status'] = 'failed';
-				$resp['msg'] = "Your Account is not verified yet.";
+				$resp['msg'] = "Tài khoản của bạn chưa được xác thực.";
 			}
 			
 		}else{
 		$resp['status'] = 'failed';
-		$resp['msg'] = "Invalid email or password.";
+		$resp['msg'] = "Email hoặc mật khẩu không hợp lệ.";
 		}
 		}
 		return json_encode($resp);

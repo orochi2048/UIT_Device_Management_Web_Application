@@ -52,7 +52,7 @@ class SystemSettings extends DBConnection{
 			$type = mime_content_type($upload);
 			$allowed = array('image/png','image/jpeg');
 			if(!in_array($type,$allowed)){
-				$resp['msg'].=" But Image failed to upload due to invalid file type.";
+				$resp['msg'].="Định dạng hình ảnh không hợp lệ.";
 			}else{
 				$new_height = 200; 
 				$new_width = 200; 
@@ -70,7 +70,7 @@ class SystemSettings extends DBConnection{
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{
-				$resp['msg'].=" But Image failed to upload due to unkown reason.";
+				$resp['msg'].="Không thể đăng hình ảnh lên.";
 				}
 			}
 			if(isset($uploaded_img) && $uploaded_img == true){
@@ -90,7 +90,7 @@ class SystemSettings extends DBConnection{
 			$type = mime_content_type($upload);
 			$allowed = array('image/png','image/jpeg');
 			if(!in_array($type,$allowed)){
-				$resp['msg'].=" But Image failed to upload due to invalid file type.";
+				$resp['msg'].="Định dạng hình ảnh không hợp lệ.";
 			}else{
 				$new_height = 720; 
 				$new_width = 1280; 
@@ -106,7 +106,7 @@ class SystemSettings extends DBConnection{
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{
-				$resp['msg'].=" But Image failed to upload due to unkown reason.";
+				$resp['msg'].="Không thể đăng hình ảnh lên.";
 				}
 			}
 			if(isset($uploaded_img) && $uploaded_img == true){
@@ -121,7 +121,7 @@ class SystemSettings extends DBConnection{
 		}
 		
 		$update = $this->update_system_info();
-		$flash = $this->set_flashdata('success','System Info Successfully Updated.');
+		$flash = $this->set_flashdata('success','Thông tin hệ thống đã được cập nhật.');
 		if($update && $flash){
 			// var_dump($_SESSION);
 			return true;

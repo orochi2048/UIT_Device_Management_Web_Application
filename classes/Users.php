@@ -43,7 +43,7 @@ Class Users extends DBConnection {
 			$qry = $this->conn->query("INSERT INTO users set {$data}");
 			if($qry){
 				$id = $this->conn->insert_id;
-				$this->settings->set_flashdata('success','User Details successfully saved.');
+				$this->settings->set_flashdata('success','Thông tin người dùng đã được lưu.');
 				$resp['status'] = 1;
 			}else{
 				$resp['status'] = 2;
@@ -52,7 +52,7 @@ Class Users extends DBConnection {
 		}else{
 			$qry = $this->conn->query("UPDATE users set $data where id = {$id}");
 			if($qry){
-				$this->settings->set_flashdata('success','User Details successfully updated.');
+				$this->settings->set_flashdata('success','Thông tin người dùng đã được cập nhật.');
 				if($id == $this->settings->userdata('id')){
 					foreach($_POST as $k => $v){
 						if($k != 'id'){
@@ -76,7 +76,7 @@ Class Users extends DBConnection {
 			$type = mime_content_type($upload);
 			$allowed = array('image/png','image/jpeg');
 			if(!in_array($type,$allowed)){
-				$resp['msg'].=" But Image failed to upload due to invalid file type.";
+				$resp['msg'].="Định dạng hình ảnh không hợp lệ.";
 			}else{
 				$new_height = 200; 
 				$new_width = 200; 
@@ -94,7 +94,7 @@ Class Users extends DBConnection {
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{
-				$resp['msg'].=" But Image failed to upload due to unkown reason.";
+				$resp['msg'].="Không thể đăng hình ảnh lên.";
 				}
 			}
 			if(isset($uploaded_img)){
@@ -114,7 +114,7 @@ Class Users extends DBConnection {
 		$qry = $this->conn->query("DELETE FROM users where id = $id");
 		if($qry){
 			$avatar = explode("?",$avatar)[0];
-			$this->settings->set_flashdata('success','User Details successfully deleted.');
+			$this->settings->set_flashdata('success','Thông ti người dùng đã bị xóa.');
 			if(is_file(base_app.$avatar))
 				unlink(base_app.$avatar);
 			$resp['status'] = 'success';
@@ -129,7 +129,7 @@ Class Users extends DBConnection {
 		if(isset($oldpassword)){
 			if(md5($oldpassword) != $this->settings->userdata('password')){
 				return json_encode(array("status"=>'failed',
-										 "msg"=>'Old Password is Incorrect'));
+										 "msg"=>'Sai mật khẩu cũ'));
 			}
 		}
 		$chk = $this->conn->query("SELECT * FROM `student_list` where email ='{$email}' ".($id>0? " and id!= '{$id}' " : ""))->num_rows;
@@ -188,7 +188,7 @@ Class Users extends DBConnection {
 			$type = mime_content_type($upload);
 			$allowed = array('image/png','image/jpeg');
 			if(!in_array($type,$allowed)){
-				$resp['msg'].=" But Image failed to upload due to invalid file type.";
+				$resp['msg'].="Định dạng hình ảnh không hợp lệ.";
 			}else{
 				$new_height = 200; 
 				$new_width = 200; 
@@ -206,7 +206,7 @@ Class Users extends DBConnection {
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{
-				$resp['msg'].=" But Image failed to upload due to unkown reason.";
+				$resp['msg'].="Không thể đăng hình ảnh lên.";
 				}
 			}
 			if(isset($uploaded_img)){

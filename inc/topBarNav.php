@@ -76,11 +76,6 @@
               <!-- <li class="nav-item">
                 <a href="#" class="nav-link">Contact</a>
               </li> -->
-              <?php if($_settings->userdata('id') > 0): ?>
-              <li class="nav-item">
-                <a href="./?page=profile" class="nav-link <?= isset($page) && $page =='profile' ? "active" : "" ?>">Profile</a>
-              </li>
-              <?php endif; ?>
             </ul>
           </div>
           <!-- Right navbar links -->

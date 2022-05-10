@@ -48,7 +48,6 @@
 								<img src="<?= validate_image($row['thumbnail_path'] ? $row['thumbnail_path'] : "") ?>" alt="Storage Image" class="img-thumbnail bg-gradient-dark img-thumb-path">
 							</td>
 							<td><?php echo ucwords($row['name']) ?></td>
-							<td class="text-right"><?php echo number_format($row['cost'],2) ?></td>
 							<td class="text-center">
                                 <?php
                                     switch($row['status']){

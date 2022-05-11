@@ -226,7 +226,7 @@
         })
         $('#booking-form').submit(function(e){
             e.preventDefault()
-            _conf("Please make sure that you have reviewed the form before you continue to submit the booking.","submit_booking",[])
+            _conf("Hãy đảm bảo rằng bạn đã kiểm tra mọi thông tin trước khi nộp yêu cầu.","submit_booking",[])
             
         })
     })

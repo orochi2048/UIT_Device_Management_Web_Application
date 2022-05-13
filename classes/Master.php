@@ -122,7 +122,7 @@ Class Master extends DBConnection {
 			}
 			$_POST['book_code'] = "{$prefix}{$code}";
 		}
-		$_POST['client_name'] = "{$_POST['lastname']}, {$_POST['firstname']} {$_POST['middlename']}";
+		$_POST['client_name'] = "{$_POST['fullname']}";
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k =>$v){

@@ -19,6 +19,7 @@
 					<col width="5%">
 					<col width="15%">
 					<col width="15%">
+					<col width="10%">
 					<col width="20%">
 					<col width="20%">
 					<col width="10%">
@@ -29,6 +30,7 @@
 						<th>#</th>
 						<th>Ngày tạo</th>
 						<th>Mã đặt</th>
+						<th>Mã số sinh viên</th>
 						<th>Tên người mượn</th>
 						<th>Tên thiết bị</th>
 						<th>Trạng thái</th>

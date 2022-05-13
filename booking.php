@@ -21,15 +21,15 @@
                             <legend class="text-info">Thông tin người mượn</legend>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="firstname" name="firstname" autofocus class="form-control form-control-sm form-control-border" placeholder="Firstname" required>
+                                    <input type="text" id="fullname" name="fullname" autofocus class="form-control form-control-sm form-control-border" placeholder="Họ và tên" required>
                                     <small class="text-muted px-4">Họ và tên</small>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="MSSV_placeholder" name="MSSV_placeholder" autofocus class="form-control form-control-sm form-control-border" placeholder="MSSV_placeholder" required>
+                                    <input type="text" id="MSSV" name="MSSV" autofocus class="form-control form-control-sm form-control-border" placeholder="Mã số sinh viên" required>
                                     <small class="text-muted px-4">Mã số sinh viên</small>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="ClassID_placeholder" name="ClassID_placeholder" autofocus class="form-control form-control-sm form-control-border" placeholder="ClassID_placeholder" required>
+                                    <input type="text" id="ClassID" name="ClassID" autofocus class="form-control form-control-sm form-control-border" placeholder="Mã lớp" required>
                                     <small class="text-muted px-4">Mã lớp</small>
                                 </div>
                             </div>
@@ -69,23 +69,22 @@
                             <legend class="text-info">Thông tin mượn thiết bị</legend>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <small class="text-muted px-4">Loại thiết bị</small>
-                                    <select name="storage_id" id="storage_id" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn loại thiết bị tại đây" required>
+                                    <small class="text-muted px-4">Thiết bị</small>
+                                    <select name="storage_id" id="storage_id" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn thiết bị tại đây" required>
                                         <option value="" disabled selected></option>
                                         <?php 
                                         $storage_arr = [];
-                                        $storage = $conn->query("SELECT * FROM `storage_list` where status =1 order by `name` asc ");
+                                        $storage = $conn->query("SELECT * FROM `thietbi_2017` where Da_hu =0 order by `Ten_thiet_bi` asc ");
                                         while($row = $storage->fetch_assoc()):
-                                            $row['description'] = addslashes(html_entity_decode($row['description']));
                                             $storage_arr[$row['id']] = $row;
                                         ?>
-                                        <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                                        <option value="<?= $row['Ky_hieu'] ?>"><?= $row['Ten_thiet_bi'] ?></option>
                                         <?php endwhile; ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <small class="text-muted px-4">Tên thiết bị (Ex: Mẫu mã)</small>
-                                    <select name="type" id="type" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn mẫu mã tại đây" required>
+                                    <small class="text-muted px-4">Số lượng</small>
+                                    <select name="type" id="type" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn số lượng tại đây" required>
                                         <option value="" disabled selected></option>
                                         <option>1</option>
                                         <option>2</option>

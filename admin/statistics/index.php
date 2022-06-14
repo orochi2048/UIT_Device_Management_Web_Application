@@ -45,12 +45,12 @@
     <div class="container_swap" id="filter">
 		<form>
 			<div class="form-group">
-				<select data-filter="name col-sm-3" class="filter-name filter form-control div_filter" onchange="CustomFilter(this)">
+				<select data-filter="name col-sm-3" class="filter-name filter form-control div_filter" onchange="showTable(this.value)">
 					<option value="">-----Chọn-----</option>
-					<option value="nam">Theo Năm</option>
-					<option value="thang">Theo Tháng</option>
-					<option value="ngay">Theo Ngày</option>
-					<option value="quahan">Quá Hạn</option>
+					<option value="2021">Theo Năm</option>
+					<option value="2">Theo Tháng</option>
+					<option value="3">Theo Ngày</option>
+					<option value="4">Quá Hạn</option>
 				</select>
                 <input type="year" id="start" name="start">
 			</div>
@@ -58,104 +58,13 @@
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
-        <div class="container-fluid">
-			<table class="table table-hover table-striped myTable" id="table" data-search="true" data-toggle="table" data-filter-control="true" data-click-to-select="true" data-toolbar="#toolbar">
-				<colgroup>
-					<col width="5%">
-					<col width="20%">
-					<col width="15%">
-					<col width="35%">
-					<col width="10%">
-				</colgroup>
-				<thead>
-					<tr>
-						<th class="text-center" data-sortable="true">#</th>
-						<th class="text-center" data-field="date" data-filter-control="select" data-sortable="true">Ngày tạo</th>
-						<th class="text-center">Hình minh họa</th>
-						<th class="text-center" data-field="name" data-filter-control="select" data-sortable="true">Tên</th>
-						<th class="text-center" data-field="status" data-filter-control="select" data-sortable="true">Trạng thái</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-						$i = 1;
-						$qry = $conn->query("SELECT * from `storage_list`order by `name` asc ");
-						while($row = $qry->fetch_assoc()):
-					?>
-						<tr>
-							<td class="text-center"><?php echo $i++; ?></td>
-							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
-							<td class="text-center">
-								<img src="<?= validate_image($row['thumbnail_path'] ? $row['thumbnail_path'] : "") ?>" alt="Storage Image" class="img-thumbnail bg-gradient-dark img-thumb-path">
-							</td>
-							<td><?php echo ucwords($row['name']) ?></td>
-							<td class="text-center">
-                                <?php
-                                    switch($row['status']){
-                                        case '2':
-											echo "Đã mượn";
-											break;
-										case '1':
-											echo "Có sẵn";
-											break;
-										case '0':
-											echo "Bị hỏng";
-											break;
-                                    }
-                                ?>
-                            </td>
-						</tr>
-					<?php endwhile; ?>
-				</tbody>
-			</table>
+        <div class="container-fluid" id="container-table">
+            
 		</div>
 		</div>
 	</div>
 </div>
 <script>
-var doc = document, win = window;
-var func = {
-CreateOjb: function()
-{
-    var xmlhttp;
-    if(win.XMLHttpRequest)
-    {
-        xmlhttp = new XMLHttpRequest();
-    }
-    else if(win.ActiveXObject)
-    {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }  
-    else
-    {
-        xmlhttp = null;
-    }
-    return xmlhttp;
-},
-get:function()
-{
-    var http = func.CreateOjb();
-    http.onreadystatechange = function()
-    {
-        if(http.readyState == 4)
-        {
-        doc.getElementById("Show").innerHTML = http.responseText;
-        }
-    }
-}
-http.open('get','test-2.php?value=' + doc.getElementById("value").value);
-http.send(null);
-$(document).ready(function() {
-   $('#myInput').on('keyup', function(event) {
-      event.preventDefault();
-      /* Act on the event */
-      var tukhoa = $(this).val().toLowerCase();
-      $('#table tr').filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa)>-1);
-      });
-   });
-});
-
 /* var $table = $('#table');
     $(function () {
         $('#toolbar').find('select').change(function () {
@@ -165,27 +74,45 @@ $(document).ready(function() {
         });
     })
 */
-function CustomFilter(obj){
+/*function CustomFilter(obj){
 	var value = obj.value;
     if (value === ''){
     }
-    else if (value === 'nam'){
+    else if (value === '1'){
       $('#start').attr('type','year');
       var tukhoa = "";
       $('#table tr').filter(function() {
          $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa)>-1);
       });
     }
-    else if (value === 'thang'){
+    else if (value === '2'){
       $('#start').attr('type','month');
     }
-    else if (value === 'ngay'){
+    else if (value === '3'){
       $('#start').attr('type','date');
     }
-    else if (value === 'quahan'){
+    else if (value === '4'){
       $('#start').attr('type','date');
     }
+}*/
+
+function showTable(id_option){
+	if(id_option==""){
+		document.getElementById("container-table").innerHTML = "";
+	}if(id_option=="2021"){
+		var myRequest = new XMLHttpRequest();
+		myRequest.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("container-table").innerHTML = this.responseText;
+		}
+	};
+	    myRequest.open("GET","statistics/table.php?id=" + id_option,true);
+	    myRequest.send(null); 
+	}
+	else{
+		document.getElementById("container-table").innerHTML = "";
+	}
 }
-</>
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.20.1/bootstrap-table.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.17.1/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>

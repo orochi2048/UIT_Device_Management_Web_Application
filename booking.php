@@ -143,10 +143,9 @@
     var storage = $.parseJSON('<?= json_encode($storage_arr) ?>');
     function calc_amount(){
         var days = $('input[name="storing_days"]').val()
-        var cost = $('input[name="cost"]').val()
         var amount = 0
-        if(days > 0 && cost > 0){
-            amount = parseFloat(cost) * parseFloat(days)
+        if(days > 0){
+            amount = parseFloat(days)
         }
         $('#storage-amount').text(parseFloat(amount).toLocaleString('en-US',{style:'decimal',minimumFractionDigits:2,maximumFractionDigits:2}))
         $('input[name="amount"]').val(amount)

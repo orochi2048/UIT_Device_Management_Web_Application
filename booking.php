@@ -41,13 +41,13 @@
                                         </div>
                                         <div class="form-group col-auto">
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="genderMale" name="gender" value="Male" required checked>
+                                                <input class="custom-control-input" type="radio" id="genderMale" name="gender" value="Nam" required checked>
                                                 <label for="genderMale" class="custom-control-label">Nam</label>
                                             </div>
                                         </div>
                                         <div class="form-group col-auto">
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" id="genderFemale" name="gender" value="Female">
+                                                <input class="custom-control-input" type="radio" id="genderFemale" name="gender" value="Nữ">
                                                 <label for="genderFemale" class="custom-control-label">Nữ</label>
                                             </div>
                                         </div>
@@ -74,11 +74,11 @@
                                         <option value="" disabled selected></option>
                                         <?php 
                                         $storage_arr = [];
-                                        $storage = $conn->query("SELECT * FROM `thietbi_2017` where Da_hu =0 order by `Ten_thiet_bi` asc ");
+                                        $storage = $conn->query("SELECT * FROM `thiet_bi_uit` where Da_hu =0 order by `Ten_thiet_bi` asc ");
                                         while($row = $storage->fetch_assoc()):
                                             $storage_arr[$row['id']] = $row;
                                         ?>
-                                        <option value="<?= $row['Ky_hieu'] ?>"><?= $row['Ten_thiet_bi'] ?></option>
+                                        <option value="<?= $row['ID'] ?>"><?= $row['Ten_thiet_bi'] ?></option>
                                         <?php endwhile; ?>
                                     </select>
                                 </div>

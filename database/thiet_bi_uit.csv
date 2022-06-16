@@ -1,97 +1,97 @@
-ID ,Ten_thiet_bi,So_luong,Da_hu
-TB.2017.01,Arduino Pro Micro,2,0
-TB.2017.02,Arduino Due,2,0
-TB.2017.03,Arduino Nano,2,0
-TB.2017.04,Arduino Pro Mini ATmega328P 5V,2,0
-TB.2017.05,Axis M1034-W wireless IP camera HD,2,0
-TB.2017.06,Beaglebone Black,1,0
-TB.2017.07,Bo Kit deRFdevelopmentKit 6LoWPAN,1,0
-TB.2017.08,Bo phat WIFI LINKSYS WRT54G Wireless Router,2,0
-TB.2017.09,CSR10X0 Starter Development Kit,5,0
-TB.2017.40,Dien thoai Panasonic,1,0
-TB.2017.10,eKo Pro Outdoor Environmental Monitoring System,1,0
-TB.2017.11,Ethernet ENC28J60,2,0
-TB.2017.12,Kem bam mang Dintek-Crimpong tool,1,0
-TB.2017.13,KVM Switch D-link 4U,1,0
-TB.2017.41,Man chieu,1,0
-TB.2017.37,Man hinh LCD DELL UltraSharp 27,1,1
-TB.2017.14,May test cap mang va dien thoai NF-308,1,0
-TB.2017.32,May tinh de ban DELL XPS 8900 Desktop,2,0
-TB.2017.44,May tinh xach tay Mobile Workstation HP IDS i7-6700HQ,2,0
-TB.2017.39,May vi tinh xach tay Precision 15 5000 series (5510),2,0
-TB.2017.15,MCS410CB,1,0
-TB.2017.16,Mobile Field Kit (Laptop),2,0
-TB.2017.17,Module RFID RC522 NFC 13.56MHz,2,0
-TB.2017.18,NetFPGA-1G-CML Kintex-7 FPGA Development board,2,0
-TB.2017.36,Phan mem IDA Pro,10,0
-TB.2017.19,"Security Router CISCO ASA 5505 Appliance switch SW, 10 users, 8 ports, 3DES/AES",1,0
-TB.2017.20,SF90D-16 16-port 10/100 Desktop switch,1,0
-TB.2017.21,Spark core,5,0
-TB.2017.22,Spark electron,1,0
-TB.2017.23,Tah IO,2,0
-TB.2017.24,TELOSB MOTE PLATFORM,2,0
-TB.2017.25,Forensic Recovery of Evidence: FRED-F1120,1,0
-TB.2017.26,RAPID7 R7-1000 console appliance,1,0
-TB.2017.27,ICS RoadMASSter-2 Forensic Hard Drive Acquisition Tool & Analysis Lab,1,0
-TB.2017.28,CISCO SNS-3515-K9,1,0
-TB.2017.35,Tivi LED Sony 60 inches,1,0
-TB.2017.30,USB UART CP2102,2,0
-TB.2017.29,USB Armory,2,0
-TB.2017.31,Man hinh LED 60 inch SAMSUNG,2,0
-TB.2017.33,Cap mang chong chay SCHNEIDER,1,0
-TB.2017.34,Patch Cord Dintek CAT6 UTP 3 met,150,0
-TB.2017.38,Phan mem quan ly kich ban kiem thu an toan thong tin tren nen dien toan dam may,1,0
-TB.2018.37,ESA-C390-K9,1,0
-TB.2018.19,ALR-9900+-DevC,2,0
-TB.2018.20,LAUNCHXL-CC26X2R1,2,0
-TB.2018.21,CC2650RC-BLEDEV,3,0
-TB.2018.22,CC2538,2,0
-TB.2018.23,Archer T6E,7,0
-TB.2018.24,Archer T2U,14,0
-TB.2018.25,TL-WN722N,7,0
-TB.2018.26,Archer C20,5,1
-TB.2018.27,EA2750,2,0
-TB.2018.28,DKVM-4U,1,0
-TB.2018.29,SF95D-16-AS,1,0
-TB.2018.30,ISR4221/K9,1,0
-TB.2018.31,0810-004Wireless Camera IP AXIS M1065-LW,3,0
-TB.2018.32,AIRCHECK G2,1,0
-TB.2018.38,MAC LCD 21.5'' With Retina 4K,4,0
-TB.2018.09,Beaglebone Black,8,0
-TB.2018.33,AIR-AP38021I-S-K9,2,0
-TB.2018.08,Arduino Due,4,0
-TB.2018.34,Arduino Nano,4,0
-TB.2018.07,USB Armory,8,0
-TB.2018.35,Spark Electron,5,0
-TB.2018.36,Particle Photon,5,0
-TB.2018.10,HPE 1.2TB SAS 10K SFF SC DS HDD,10,0
-TB.2018.11,Cisco ASA5516-FPWR-K9,1,0
-TB.2018.12,Cisco ASA5516-FPWR-K9,1,0
-TB.2018.06,Mikrotik CCR1009-7G-1C-PC,1,0
-TB.2018.13,Cisco WSA-S390-K9WSA-WSP-LIC,1,0
-TB.2018.14,ICS RoadMASSter-3 X2 Forensic Hard Drive Aequisition/ Duplication/ Analysis Lab,1,0
-TB.2018.15,FREDDIE System SKU: F1130,2,0
-TB.2018.04,CRU WiebeTech Forensic UltraDock v5.5,1,0
-TB.2018.03,HackRF One,5,0
-TB.2018.16,Ettus USRP N210,3,0
-TB.2018.16.01,USRP N210 Kit ,3,0
-TB.2018.16.02,BasicTX Daughterboard 1-250 MHz Tx,1,0
-TB.2018.16.03,BasicRX Daughterboard 1-250 MHz Rx,1,0
-TB.2018.16.04,LFTX DaughterBoard 0-30 MHz Tx,1,0
-TB.2018.16.05,LFRX DaughterBoard 0-30 MHz Rx,1,0
-TB.2018.16.06,MIMO Cable,1,0
-TB.2018.16.07,Power Supply (6Volt),1,0
-TB.2018.16.08,3-Volt Active GPS Antenna for N Series,1,0
-TB.2018.16.09,CBX 1200-6000 MHz Rx/Tx (40MHz),1,0
-TB.2018.16.10,GPSDO Kit for USRP N200/N210,1,0
-TB.2018.16.11,SMA-Bulkhead Cache,1,0
-TB.2018.16.12,Octo Clock,1,0
-TB.2018.16.13,UBX40: UBX 10-6000 MHz Rx/Tx,1,0
-TB.2018.16.14,VERT400 Antenna,1,0
-TB.2018.16.15,VERT2450 Antenna,1,0
-TB.2018.16.16,LP0965 Antenna,1,0
-TB.2018.01,Proxmark3 Kit,2,0
-TB.2018.05,Wi-Spy 2.4x Spectrum Analyzer,1,0
-TB.2018.02,DG-APP-IOE,10,0
-TB.2018.17,Optiplex 7050MT,4,0
-TB.2018.18,Dell UltraSharp 27 Infinity Edge Monitor/U2717D 27,4,0
+ID ,Ten_thiet_bi,So_luong,Da_hu,Status
+TB.2017.01,Arduino Pro Micro,2,0,1
+TB.2017.02,Arduino Due,2,0,1
+TB.2017.03,Arduino Nano,2,0,1
+TB.2017.04,Arduino Pro Mini ATmega328P 5V,2,0,1
+TB.2017.05,Axis M1034-W wireless IP camera HD,2,0,1
+TB.2017.06,Beaglebone Black,1,0,1
+TB.2017.07,Bo Kit deRFdevelopmentKit 6LoWPAN,1,0,1
+TB.2017.08,Bo phat WIFI LINKSYS WRT54G Wireless Router,2,0,1
+TB.2017.09,CSR10X0 Starter Development Kit,5,0,1
+TB.2017.40,Dien thoai Panasonic,1,0,1
+TB.2017.10,eKo Pro Outdoor Environmental Monitoring System,1,0,1
+TB.2017.11,Ethernet ENC28J60,2,0,1
+TB.2017.12,Kem bam mang Dintek-Crimpong tool,1,0,1
+TB.2017.13,KVM Switch D-link 4U,1,0,1
+TB.2017.41,Man chieu,1,0,1
+TB.2017.37,Man hinh LCD DELL UltraSharp 27,1,1,1
+TB.2017.14,May test cap mang va dien thoai NF-308,1,0,1
+TB.2017.32,May tinh de ban DELL XPS 8900 Desktop,2,0,1
+TB.2017.44,May tinh xach tay Mobile Workstation HP IDS i7-6700HQ,2,0,1
+TB.2017.39,May vi tinh xach tay Precision 15 5000 series (5510),2,0,1
+TB.2017.15,MCS410CB,1,0,1
+TB.2017.16,Mobile Field Kit (Laptop),2,0,1
+TB.2017.17,Module RFID RC522 NFC 13.56MHz,2,0,1
+TB.2017.18,NetFPGA-1G-CML Kintex-7 FPGA Development board,2,0,1
+TB.2017.36,Phan mem IDA Pro,10,0,1
+TB.2017.19,"Security Router CISCO ASA 5505 Appliance switch SW, 10 users, 8 ports, 3DES/AES",1,0,1
+TB.2017.20,SF90D-16 16-port 10/100 Desktop switch,1,0,1
+TB.2017.21,Spark core,5,0,1
+TB.2017.22,Spark electron,1,0,1
+TB.2017.23,Tah IO,2,0,1
+TB.2017.24,TELOSB MOTE PLATFORM,2,0,1
+TB.2017.25,Forensic Recovery of Evidence: FRED-F1120,1,0,1
+TB.2017.26,RAPID7 R7-1000 console appliance,1,0,1
+TB.2017.27,ICS RoadMASSter-2 Forensic Hard Drive Acquisition Tool & Analysis Lab,1,0,1
+TB.2017.28,CISCO SNS-3515-K9,1,0,1
+TB.2017.35,Tivi LED Sony 60 inches,1,0,1
+TB.2017.30,USB UART CP2102,2,0,1
+TB.2017.29,USB Armory,2,0,1
+TB.2017.31,Man hinh LED 60 inch SAMSUNG,2,0,1
+TB.2017.33,Cap mang chong chay SCHNEIDER,1,0,1
+TB.2017.34,Patch Cord Dintek CAT6 UTP 3 met,150,0,1
+TB.2017.38,Phan mem quan ly kich ban kiem thu an toan thong tin tren nen dien toan dam may,1,0,1
+TB.2018.37,ESA-C390-K9,1,0,1
+TB.2018.19,ALR-9900+-DevC,2,0,1
+TB.2018.20,LAUNCHXL-CC26X2R1,2,0,1
+TB.2018.21,CC2650RC-BLEDEV,3,0,1
+TB.2018.22,CC2538,2,0,1
+TB.2018.23,Archer T6E,7,0,1
+TB.2018.24,Archer T2U,14,0,1
+TB.2018.25,TL-WN722N,7,0,1
+TB.2018.26,Archer C20,5,1,1
+TB.2018.27,EA2750,2,0,1
+TB.2018.28,DKVM-4U,1,0,1
+TB.2018.29,SF95D-16-AS,1,0,1
+TB.2018.30,ISR4221/K9,1,0,1
+TB.2018.31,0810-004Wireless Camera IP AXIS M1065-LW,3,0,1
+TB.2018.32,AIRCHECK G2,1,0,1
+TB.2018.38,MAC LCD 21.5'' With Retina 4K,4,0,1
+TB.2018.09,Beaglebone Black,8,0,1
+TB.2018.33,AIR-AP38021I-S-K9,2,0,1
+TB.2018.08,Arduino Due,4,0,1
+TB.2018.34,Arduino Nano,4,0,1
+TB.2018.07,USB Armory,8,0,1
+TB.2018.35,Spark Electron,5,0,1
+TB.2018.36,Particle Photon,5,0,1
+TB.2018.10,HPE 1.2TB SAS 10K SFF SC DS HDD,10,0,1
+TB.2018.11,Cisco ASA5516-FPWR-K9,1,0,1
+TB.2018.12,Cisco ASA5516-FPWR-K9,1,0,1
+TB.2018.06,Mikrotik CCR1009-7G-1C-PC,1,0,1
+TB.2018.13,Cisco WSA-S390-K9WSA-WSP-LIC,1,0,1
+TB.2018.14,ICS RoadMASSter-3 X2 Forensic Hard Drive Aequisition/ Duplication/ Analysis Lab,1,0,1
+TB.2018.15,FREDDIE System SKU: F1130,2,0,1
+TB.2018.04,CRU WiebeTech Forensic UltraDock v5.5,1,0,1
+TB.2018.03,HackRF One,5,0,1
+TB.2018.16,Ettus USRP N210,3,0,1
+TB.2018.16.01,USRP N210 Kit ,3,0,1
+TB.2018.16.02,BasicTX Daughterboard 1-250 MHz Tx,1,0,1
+TB.2018.16.03,BasicRX Daughterboard 1-250 MHz Rx,1,0,1
+TB.2018.16.04,LFTX DaughterBoard 0-30 MHz Tx,1,0,1
+TB.2018.16.05,LFRX DaughterBoard 0-30 MHz Rx,1,0,1
+TB.2018.16.06,MIMO Cable,1,0,1
+TB.2018.16.07,Power Supply (6Volt),1,0,1
+TB.2018.16.08,3-Volt Active GPS Antenna for N Series,1,0,1
+TB.2018.16.09,CBX 1200-6000 MHz Rx/Tx (40MHz),1,0,1
+TB.2018.16.10,GPSDO Kit for USRP N200/N210,1,0,1
+TB.2018.16.11,SMA-Bulkhead Cache,1,0,1
+TB.2018.16.12,Octo Clock,1,0,1
+TB.2018.16.13,UBX40: UBX 10-6000 MHz Rx/Tx,1,0,1
+TB.2018.16.14,VERT400 Antenna,1,0,1
+TB.2018.16.15,VERT2450 Antenna,1,0,1
+TB.2018.16.16,LP0965 Antenna,1,0,1
+TB.2018.01,Proxmark3 Kit,2,0,1
+TB.2018.05,Wi-Spy 2.4x Spectrum Analyzer,1,0,1
+TB.2018.02,DG-APP-IOE,10,0,1
+TB.2018.17,Optiplex 7050MT,4,0,1
+TB.2018.18,Dell UltraSharp 27 Infinity Edge Monitor/U2717D 27,4,0,1

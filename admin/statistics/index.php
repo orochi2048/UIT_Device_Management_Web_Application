@@ -45,14 +45,15 @@
     <div class="container_swap" id="filter">
 		<form>
 			<div class="form-group">
-				<select data-filter="name col-sm-3" class="filter-name filter form-control div_filter" onchange="showTable(this.value)">
+				<select data-filter="name col-sm-3" id="id-option" class="filter-name filter form-control div_filter" onchange="showTable(this.value)">
 					<option value="">-----Chọn-----</option>
-					<option value="2021">Theo Năm</option>
+					<option value="1">Theo Năm</option>
 					<option value="2">Theo Tháng</option>
 					<option value="3">Theo Ngày</option>
 					<option value="4">Quá Hạn</option>
 				</select>
-                <input type="year" id="start" name="start">
+                <input type="number" id="date-input" name="date-input" required>
+                <input type="submit" id="statistic" name="result">
 			</div>
 		</form>
 	</div>
@@ -65,54 +66,46 @@
 	</div>
 </div>
 <script>
-/* var $table = $('#table');
-    $(function () {
-        $('#toolbar').find('select').change(function () {
-            $table.bootstrapTable('refreshOptions', {
-                exportDataType: $(this).val()
-            });
-        });
-    })
-*/
-/*function CustomFilter(obj){
-	var value = obj.value;
-    if (value === ''){
-    }
-    else if (value === '1'){
-      $('#start').attr('type','year');
-      var tukhoa = "";
-      $('#table tr').filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa)>-1);
-      });
-    }
-    else if (value === '2'){
-      $('#start').attr('type','month');
-    }
-    else if (value === '3'){
-      $('#start').attr('type','date');
-    }
-    else if (value === '4'){
-      $('#start').attr('type','date');
-    }
-}*/
-
 function showTable(id_option){
 	if(id_option==""){
 		document.getElementById("container-table").innerHTML = "";
-	}if(id_option=="2021"){
-		var myRequest = new XMLHttpRequest();
-		myRequest.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("container-table").innerHTML = this.responseText;
-		}
-	};
-	    myRequest.open("GET","statistics/table.php?id=" + id_option,true);
-	    myRequest.send(null); 
+        $('#date-input').attr('type','year');
+    }
+    if(id_option=="1"){
+        $('#date-input').attr('type','year');
 	}
-	else{
-		document.getElementById("container-table").innerHTML = "";
-	}
+    if(id_option=="2"){
+        $('#date-input').attr('type','month');
+    }
+    if(id_option=="3"){
+        $('#date-input').attr('type','date');
+    }
 }
+
+$(document).ready(function () {
+    // Bắt sự kiện khi người dùng click vào button
+    $('#statistic').click(function (e) {
+        // Ngăn không cho load lại trang
+        e.preventDefault();
+        //Lấy giá trị ngày tháng năm của ô input
+        let ymd = $('#date-input').val().split("-");
+        let year = ymd[0];
+        let month = ymd[1];
+        let date = ymd[2];
+        let id = document.getElementById("id-option").value;
+        // Gửi request đến file table.php để xử lý với tham số là year,month,date
+        var myRequest = new XMLHttpRequest();
+        myRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("container-table").innerHTML = this.responseText;
+            }
+        };
+            myRequest.open("GET","statistics/table.php?id=" + id + "&year=" + year + "&month=" + month + "&date=" + date,true);
+            myRequest.send(null); 
+        });
+});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.20.1/bootstrap-table.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.17.1/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

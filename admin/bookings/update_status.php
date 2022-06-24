@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT b.*,s.name as storage, s.description as storage_description,s.thumbnail_path from `booking_list` b inner join `storage_list` s on b.storage_id = s.id where b.id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT b.*,s.Ten_thiet_bi as storage from `booking_list` b inner join `thiet_bi_uit` s on b.storage_id = s.ID where b.ID = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){

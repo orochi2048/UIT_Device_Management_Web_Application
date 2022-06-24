@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT * FROM `storage_list` where id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT * FROM `thiet_bi_uit` where ID = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){
@@ -21,10 +21,18 @@ if(isset($_GET['id'])){
 </style>
 <div class="container-fluid">
     <form action="" id="storage-form">
-        <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
+        <input type="hidden" name="ID" value="<?php echo isset($ID) ? $ID : '' ?>">
         <div class="form-group">
-            <label for="name" class="control-label">Tên thiết bị</label>
-            <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Tên thiết bị" value ="<?php echo isset($name) ? $name : '' ?>" required>
+            <label for="Ten_thiet_bi" class="control-label">Tên thiết bị</label>
+            <input type="text" name="Ten_thiet_bi" id="Ten_thiet_bi" class="form-control form-control-border" placeholder="Tên thiết bị" value ="<?php echo isset($Ten_thiet_bi) ? $Ten_thiet_bi : '' ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="So_luong" class="control-label">Số lượng</label>
+            <input type="text" name="So_luong" id="So_luong" class="form-control form-control-border" placeholder="Số lượng" value ="<?php echo isset($So_luong) ? $So_luong : '' ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="Da_hu" class="control-label">Đã hư</label>
+            <input type="text" name="Da_hu" id="Da_hu" class="form-control form-control-border" placeholder="Đã hư" value ="<?php echo isset($Da_hu) ? $Da_hu : '' ?>" required>
         </div>
         <div class="form-group">
             <label for="description" class="control-label">Mô tả</label>
@@ -39,16 +47,16 @@ if(isset($_GET['id'])){
         <div class="row">
             <div class="form-group col-md-6">
                 <center>
-                    <img src="<?= validate_image(isset($thumbnail_path) ? $thumbnail_path : "") ?>" alt="Cold Storage Image" id="cimg" class="bg-gradient-dark">
+                    <img src="<?= validate_image(isset($thumbnail_path) ? $thumbnail_path : "") ?>" alt="Thumbnail Image" id="cimg" class="bg-gradient-dark">
                 </center>
             </div>
         </div>
         <div class="form-group">
             <label for="" class="control-label">Trạng thái</label>
             <select name="status" id="status" class="form-control form-control-border" required>
-                <option value="2" <?= isset($status) && $status == 2 ? "selected" :"" ?>>Đã mượn</option>
-                <option value="1" <?= isset($status) && $status == 1 ? "selected" :"" ?>>Có sẵn</option>
-                <option value="0" <?= isset($status) && $status == 0 ? "selected" :"" ?>>Bị hỏng</option>
+                <option value="2" <?= isset($Status) && $Status == 2 ? "selected" :"" ?>>Đã mượn</option>
+                <option value="1" <?= isset($Status) && $Status == 1 ? "selected" :"" ?>>Có sẵn</option>
+                <option value="0" <?= isset($Status) && $Status == 0 ? "selected" :"" ?>>Bị hỏng</option>
             </select>
         </div>
     </form>

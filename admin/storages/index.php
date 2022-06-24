@@ -19,18 +19,22 @@
 			<table class="table table-hover table-striped">
 				<colgroup>
 					<col width="5%">
-					<col width="20%">
+					<col width="10%">
 					<col width="15%">
-					<col width="25%">
+					<col width="30%">
+					<col width="5%">
+					<col width="5%">
 					<col width="10%">
 					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Ngày tạo</th>
+						<th>ID</th>
 						<th>Hình minh họa</th>
-						<th>Tên</th>
+						<th>Tên thiết bị</th>
+						<th>Số lượng</th>
+						<th>Đã hư</th>
 						<th>Trạng thái</th>
 						<th>Hành động</th>
 					</tr>
@@ -38,19 +42,21 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT * from `storage_list`order by `name` asc ");
+						$qry = $conn->query("SELECT * from `thiet_bi_uit`order by `Ten_thiet_bi` asc ");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<td><?php echo ucwords($row['ID']) ?></td>
 							<td class="text-center">
 								<img src="<?= validate_image($row['thumbnail_path'] ? $row['thumbnail_path'] : "") ?>" alt="Storage Image" class="img-thumbnail bg-gradient-dark img-thumb-path">
 							</td>
-							<td><?php echo ucwords($row['name']) ?></td>
+							<td><?php echo ucwords($row['Ten_thiet_bi']) ?></td>
+							<td><?php echo ucwords($row['So_luong']) ?></td>
+							<td><?php echo ucwords($row['Da_hu']) ?></td>
 							<td class="text-center">
                                 <?php
-                                    switch($row['status']){
+                                    switch($row['Status']){
                                         case '2':
 											echo "<span class='badge badge-secondary badge-pill'>Đã mượn</span>";
 											break;
@@ -69,11 +75,11 @@
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-eye text-dark"></span> Xem</a>
+				                    <a class="dropdown-item view_data" href="javascript:void(0)" data-id ="<?php echo $row['ID'] ?>"><span class="fa fa-eye text-dark"></span> Xem</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Sửa</a>
+				                    <a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['ID'] ?>"><span class="fa fa-edit text-primary"></span> Sửa</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Xóa</a>
+				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['ID'] ?>"><span class="fa fa-trash text-danger"></span> Xóa</a>
 				                  </div>
 							</td>
 						</tr>

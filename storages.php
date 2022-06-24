@@ -38,17 +38,16 @@
         </div>
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-xl-4 justify-content-center gx-3 gy-3">
             <?php 
-            $storages = $conn->query("SELECT * FROM storage_list where status = 1 order by `name` asc");
+            $storages = $conn->query("SELECT * FROM thiet_bi_uit order by `Ten_thiet_bi` asc");
             while($row = $storages->fetch_assoc()):
             ?>
-                <a class="col storage-item text-decoration-none text-dark" href="javascript:void(0)" data-id="<?= $row['id'] ?>">
+                <a class="col storage-item text-decoration-none text-dark" href="javascript:void(0)" data-id="<?= $row['ID'] ?>">
                     <div class="card rounded-0 shadow">
                         <div class="text-center overflow-hidden storage-image-field">
                             <img class="img-top bg-gradient-dark border-info storage-image" src="<?php echo validate_image($row['thumbnail_path']) ?>" alt="Hình ảnh thiết bị">
                         </div>
                         <div class="card-body rounded-0">
-                            <h4 class="text-center"><b><?= ($row['name']) ?></b></h4>
-                            <h5 class="text-center"><small class="text-muted"><i class="fa fa-tag"></i> <?= number_format($row['cost'],2) ?></small></h5>
+                            <h4 class="text-center"><b><?= ($row['Ten_thiet_bi']) ?></b></h4>
                         </div>
                     </div>
                 </a>

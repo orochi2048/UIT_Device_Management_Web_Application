@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT b.*,s.name as storage, s.description as storage_description,s.thumbnail_path from `booking_list` b inner join `storage_list` s on b.storage_id = s.id where b.id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT b.*,s.Ten_thiet_bi as storage from `booking_list` b inner join `thiet_bi_uit` s on b.storage_id = s.ID where b.id = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){
@@ -42,11 +42,11 @@ if(isset($_GET['id'])){
                             <div class="col-md-6">
                                 <dl>
                                     <dt class="text-muted">Họ và tên</dt>
-                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($client_name) ? $client_name : '' ?></dd>
+                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($fullname) ? $fullname : '' ?></dd>
                                     <dt class="text-muted">Mã số sinh viên</dt>
-                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($MSSV_placeholder) ? $MSSV_placeholder : '' ?></dd>
+                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($MSSV) ? $MSSV : '' ?></dd>
                                     <dt class="text-muted">Mã lớp</dt>
-                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($ClassID_placeholder) ? $ClassID_placeholder : '' ?></dd>
+                                    <dd class='pl-4 fs-4 fw-bold'><?= isset($ClassID) ? $ClassID : '' ?></dd>
                                     <dt class="text-muted">Giới tính</dt>
                                     <dd class='pl-4 fs-4 fw-bold'><?= isset($gender) ? $gender : '' ?></dd>
                                 </dl>
@@ -80,8 +80,12 @@ if(isset($_GET['id'])){
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th>Tên</th>
+                                    <th>Tên thiết bị</th>
                                     <td><?= isset($storage) ? $storage : "" ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Số lượng</th>
+                                    <td><?= isset($amount) ? $amount : "" ?></td>
                                 </tr>
                                 <tr>
                                     <th>Mô tả</th>
@@ -92,11 +96,11 @@ if(isset($_GET['id'])){
                                 </tr>
                                 <tr>
                                     <th>Từ ngày</th>
-                                    <td class="text-right"><?= isset($date_from) ? date("mm-d-Y",strtotime($date_from)) : "" ?></td>
+                                    <td class="text-right"><?= isset($date_from) ? date("d/m/Y",strtotime($date_from)) : "" ?></td>
                                 </tr>
                                 <tr>
                                     <th>Đến ngày</th>
-                                    <td class="text-right"><?= isset($date_to) ? date("mm-d-Y",strtotime($date_to)) : "" ?></td>
+                                    <td class="text-right"><?= isset($date_to) ? date("d/m/Y",strtotime($date_to)) : "" ?></td>
                                 </tr> 
                                 <tr>
                                     <th>Số ngày</th>
@@ -118,6 +122,19 @@ if(isset($_GET['id'])){
                                     break;
                                 case '0':
                                     echo "<span class='badge badge-secondary badge-pill'>Chưa duyệt</span>";
+                                    break;
+                            }
+                        ?>
+                    </div>
+                    <div class="text-muted">Đã trả</div>
+                    <div class="pl-4">
+                        <?php
+                            switch($da_tra){
+                                case '1':
+                                    echo "<span class='badge badge-success badge-pill'>Đã trả</span>";
+                                    break;
+                                case '0':
+                                    echo "<span class='badge badge-danger badge-pill'>Chưa trả</span>";
                                     break;
                             }
                         ?>

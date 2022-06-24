@@ -1,7 +1,14 @@
 <?php
 require 'vendor/autoload.php';
+require_once('./config.php');
 
-$bargen = new Picqer\Barcode\BarcodeGeneratorPNG();
-$text = '3awoR0VXJ2Oam4V';
+$bargen = new Picqer\Barcode\BarcodeGeneratorSVG();
 
-echo '<img src="data:image/png;base64,' . base64_encode($bargen->getBarcode($text, $bargen::TYPE_CODE_128, 1, 50)) . '">';
+$bar_arr = array();
+$bar_arr_len = 100;
+for($x = 0; $x < $bar_arr_len; $x++) {
+    $text = uniqid();
+        
+}
+
+echo $bargen->getBarcode($text, $bargen::TYPE_CODE_128, 1, 80);

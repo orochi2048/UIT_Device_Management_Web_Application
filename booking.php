@@ -56,7 +56,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" id="contact" name="contact" class="form-control form-control-sm form-control-border" placeholder="Contact" required>
+                                    <input type="text" id="contact" name="contact" class="form-control form-control-sm form-control-border" placeholder="Số điện thoại" required>
                                     <small class="text-muted px-4">Số điện thoại</small>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -74,7 +74,7 @@
                                         <option value="" disabled selected></option>
                                         <?php 
                                         $storage_arr = [];
-                                        $storage = $conn->query("SELECT * FROM `thiet_bi_uit` where Da_hu =0 order by `Ten_thiet_bi` asc ");
+                                        $storage = $conn->query("SELECT * FROM `thiet_bi_uit` order by `Ten_thiet_bi` asc ");
                                         while($row = $storage->fetch_assoc()):
                                             $storage_arr[$row['id']] = $row;
                                         ?>
@@ -84,14 +84,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <small class="text-muted px-4">Số lượng</small>
-                                    <select name="type" id="type" class="form-control form-control-border select2" data-placeholder="Vui lòng chọn số lượng tại đây" required>
-                                        <option value="" disabled selected></option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                    <input type="text" id="quantity" name="quantity" autofocus class="form-control form-control-border" placeholder="Vui lòng chọn số lượng tại đây" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -202,8 +195,6 @@
             if(!!storage[sid]){
                 var data = storage[sid]
                 $('#storage-description').html(data.description)
-                $('#storage-cost').text(parseFloat(data.cost).toLocaleString('en-US',{style:'decimal',minimumFractionDigits:2,maximumFractionDigits:2}))
-                $('input[name="cost"]').val(data.cost)
             }
             calc_amount()
         })

@@ -32,21 +32,21 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
-		if(empty($id)){
-			$sql = "INSERT INTO `storage_list` set {$data} ";
+		if(empty($ID)){
+			$sql = "INSERT INTO `thiet_bi_uit` set {$data} ";
 		}else{
-			$sql = "UPDATE `storage_list` set {$data} where id = '{$id}' ";
+			$sql = "UPDATE `thiet_bi_uit` set {$data} where ID = '{$ID}' ";
 		}
-		$check = $this->conn->query("SELECT * FROM `storage_list` where `name`='{$name}' ".($id > 0 ? " and id != '{$id}'" : ""))->num_rows;
+		$check = $this->conn->query("SELECT * FROM `thiet_bi_uit` where `Ten_thiet_bi`='$Ten_thiet_bi' ".($ID > 0 ? " and ID != '{$ID}'" : ""))->num_rows;
 		if($check > 0){
 			$resp['status'] = 'failed';
 			$resp['msg'] = "Tên thiết bị đã tồn tại.";
 		}else{
 			$save = $this->conn->query($sql);
 			if($save){
-				$sid = !empty($id) ? $id : $this->conn->insert_id;
+				$sid = !empty($ID) ? $ID : $this->conn->insert_id;
 				$resp['status'] = 'success';
-				if(empty($id))
+				if(empty($ID))
 					$resp['msg'] = "Thiết bị được thêm thành công.";
 				else
 					$resp['msg'] = "Thông tin thiết bị được cập nhật thành công.";
@@ -76,7 +76,7 @@ Class Master extends DBConnection {
 								imagedestroy($gdImg);
 								imagedestroy($t_image);
 							if($uploaded_img){
-								$this->conn->query("UPDATE `storage_list` set thumbnail_path = CONCAT('{$fname}','?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$sid}' ");
+								$this->conn->query("UPDATE `thiet_bi_uit` set thumbnail_path = CONCAT('{$fname}','?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$sid}' ");
 							}
 						}else{
 						$resp['msg'].="Không thể đăng hình ảnh lên.";
@@ -95,7 +95,7 @@ Class Master extends DBConnection {
 	}
 	function delete_storage(){
 		extract($_POST);
-		$del = $this->conn->query("DELETE FROM `storage_list` where id = '{$id}'");
+		$del = $this->conn->query("DELETE FROM `thiet_bi_uit` where ID = '{$ID}'");
 		if($del){
 			$resp['status'] = 'success';
 			$this->settings->set_flashdata('success',"Thiết bị đã bị xóa.");
@@ -110,7 +110,7 @@ Class Master extends DBConnection {
 		if(empty($_POST['id'])){
 			$alpha = range("A","Z");
 			shuffle($alpha);
-			$prefix = (substr(implode("",$alpha),0,3))."-".(date('Ym'));
+			$prefix = (substr(implode("",$alpha),0,3))."-".(date('Ymd'));
 			$code = sprintf("%'.04d",1);
 			while(true){
 				$check = $this->conn->query("SELECT * FROM booking_list where `book_code` = '{$prefix}{$code}' ")->num_rows;
@@ -123,10 +123,12 @@ Class Master extends DBConnection {
 			$_POST['book_code'] = "{$prefix}{$code}";
 		}
 		$_POST['client_name'] = "{$_POST['fullname']}";
+		$_POST['student_id'] = "{$_POST['MSSV']}";
+		$_POST['amount'] = "{$_POST['quantity']}";
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k =>$v){
-			if(in_array($k,array('book_code','client_name','amount','date_from','date_to','storage_id','status'))){
+			if(in_array($k,array('book_code','student_id','client_name','amount','date_from','date_to','storage_id','status'))){
 				if(!is_numeric($v))
 					$v = $this->conn->real_escape_string($v);
 				if(!empty($data)) $data .=",";
@@ -149,7 +151,7 @@ Class Master extends DBConnection {
 				$resp['msg'] = "Yêu cầu mượn thiết bị đã được cập nhật.";
 				$data = "";
 				foreach($_POST as $k =>$v){
-					if(!in_array($k,array('id','book_code','client_name','amount','date_from','date_to','storage_id','status'))){
+					if(!in_array($k,array('id','book_code','student_id','client_name','amount','date_from','date_to','storage_id','status'))){
 						if(!is_numeric($v))
 							$v = $this->conn->real_escape_string($v);
 						if(!empty($data)) $data .=",";

@@ -24,6 +24,7 @@
 					<col width="20%">
 					<col width="10%">
 					<col width="10%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
@@ -33,6 +34,7 @@
 						<th>Mã số sinh viên</th>
 						<th>Tên người mượn</th>
 						<th>Tên thiết bị</th>
+						<th>Số lượng</th>
 						<th>Trạng thái</th>
 						<th>Hành động</th>
 					</tr>
@@ -40,15 +42,17 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT b.*,s.name as storage from `booking_list` b inner join `storage_list` s on b.storage_id = s.id order by b.`status` asc, unix_timestamp(b.date_created) desc ");
+						$qry = $conn->query("SELECT b.*,s.Ten_thiet_bi as storage from `booking_list` b inner join `thiet_bi_uit` s on b.storage_id = s.ID order by b.`status` asc ");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
 							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
 							<td><?php echo ($row['book_code']) ?></td>
+							<td><?php echo ($row['student_id']) ?></td>
 							<td><?php echo ucwords($row['client_name']) ?></td>
 							<td><?php echo ucwords($row['storage']) ?></td>
+							<td><?php echo ($row['amount']) ?></td>
 							<td class="text-center">
 								<?php
                                     switch($row['status']){

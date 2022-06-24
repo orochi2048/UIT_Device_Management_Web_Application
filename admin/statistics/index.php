@@ -29,11 +29,17 @@
         float: left;
         text-align: center;
     }
+    #date-input{
+        width: 25%;
+    }
+    #year-device-input{
+        width: 25%;
+    }
 </style>
 </head>
 <div class="card card-outline card-primary rounded-0 shadow">
 	<div class="card-header">
-		<h3 class="card-title">Danh sách thiết bị</h3>
+		<h3 class="card-title">Danh sách yêu cầu mượn thiết bị đã duyệt</h3>
 	</div>
     <!-- <div class="container_swap" id="search">
         <form id="search-form" action="" method="POST" enctype="multipart/form-data">
@@ -51,8 +57,11 @@
 					<option value="2">Theo Tháng</option>
 					<option value="3">Theo Ngày</option>
 					<option value="4">Quá Hạn</option>
+                    <option value="5">Số Lượt Mượn Của Một Thiết Bị</option>
+                    <option value="6">Số Lượt Mượn Của Một Thiết Bị Theo Năm</option>
 				</select>
-                <input type="number" id="date-input" name="date-input" required>
+                <input type="hidden" id="date-input" name="date-input" placeholder="" required>
+                <input type="hidden" id="year-device-input" name="year-device-input">
                 <input type="submit" id="statistic" name="result">
 			</div>
 		</form>
@@ -69,16 +78,35 @@
 function showTable(id_option){
 	if(id_option==""){
 		document.getElementById("container-table").innerHTML = "";
-        $('#date-input').attr('type','year');
+        $('#date-input').attr('type','hidden');
     }
     if(id_option=="1"){
+        $('#year-device-input').attr('type', 'hidden');
         $('#date-input').attr('type','year');
+        $('#date-input').attr('placeholder','Nhập năm (VD: 2022)');
 	}
     if(id_option=="2"){
+        $('#year-device-input').attr('type', 'hidden');
         $('#date-input').attr('type','month');
     }
     if(id_option=="3"){
+        $('#year-device-input').attr('type', 'hidden');
         $('#date-input').attr('type','date');
+    }
+    if(id_option=="4"){
+        $('#year-device-input').attr('type', 'hidden');
+        $('#date-input').attr('type','hidden');
+    }
+    if(id_option=="5"){
+        $('#year-device-input').attr('type', 'hidden');
+        $('#date-input').attr('type','string');
+        $('#date-input').attr('placeholder','Nhập ID thiết bị (VD: TB.2017.01)');
+    }
+    if(id_option=="6"){
+        $('#year-device-input').attr('type', 'year');
+        $('#date-input').attr('type','string');
+        $('#date-input').attr('placeholder','Nhập ID thiết bị (VD: TB.2017.01)');
+        $('#year-device-input').attr('placeholder','Nhập Năm (VD: 2022)');
     }
 }
 
@@ -92,6 +120,7 @@ $(document).ready(function () {
         let year = ymd[0];
         let month = ymd[1];
         let date = ymd[2];
+        let device = $('#date-input').val()
         let id = document.getElementById("id-option").value;
         // Gửi request đến file table.php để xử lý với tham số là year,month,date
         var myRequest = new XMLHttpRequest();
@@ -100,7 +129,7 @@ $(document).ready(function () {
                     document.getElementById("container-table").innerHTML = this.responseText;
             }
         };
-            myRequest.open("GET","statistics/table.php?id=" + id + "&year=" + year + "&month=" + month + "&date=" + date,true);
+            myRequest.open("GET","statistics/table.php?id=" + id + "&year=" + year + "&month=" + month + "&date=" + date + "&device=" + device,true);
             myRequest.send(null); 
         });
 });

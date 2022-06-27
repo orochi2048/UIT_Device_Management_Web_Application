@@ -74,7 +74,7 @@
                                         <option value="" disabled selected></option>
                                         <?php 
                                         $storage_arr = [];
-                                        $storage = $conn->query("SELECT * FROM `thiet_bi_uit` order by `Ten_thiet_bi` WHERE `status` = 1 asc ");
+                                        $storage = $conn->query("SELECT * FROM `thiet_bi_uit`WHERE Status = 1 order by `Ten_thiet_bi` asc ");
                                         while($row = $storage->fetch_assoc()):
                                             $storage_arr[$row['id']] = $row;
                                         ?>

@@ -21,7 +21,10 @@ if(isset($_GET['id'])){
 </style>
 <div class="container-fluid">
     <form action="" id="storage-form">
-        <input type="hidden" name="ID" value="<?php echo isset($ID) ? $ID : '' ?>">
+        <div class="form-group">
+            <label for="ID" class="control-label">ID</label>
+            <input type="text" name="ID" id="ID" class="form-control form-control-border" placeholder="ID thiết bị" value ="<?php echo isset($ID) ? $ID : '' ?>" required>
+        </div>
         <div class="form-group">
             <label for="Ten_thiet_bi" class="control-label">Tên thiết bị</label>
             <input type="text" name="Ten_thiet_bi" id="Ten_thiet_bi" class="form-control form-control-border" placeholder="Tên thiết bị" value ="<?php echo isset($Ten_thiet_bi) ? $Ten_thiet_bi : '' ?>" required>

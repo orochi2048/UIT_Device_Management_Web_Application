@@ -22,6 +22,7 @@ Class Master extends DBConnection {
 	}
 	function save_storage(){
 		$_POST['description'] = htmlentities($_POST['description']);
+		$_POST['ID'] = "{$_POST['ID']}";
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k =>$v){
@@ -40,7 +41,7 @@ Class Master extends DBConnection {
 		$check = $this->conn->query("SELECT * FROM `thiet_bi_uit` where `Ten_thiet_bi`='$Ten_thiet_bi' ".($ID > 0 ? " and ID != '{$ID}'" : ""))->num_rows;
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Tên thiết bị đã tồn tại.";
+			$resp['msg'] = "ID hoặc tên thiết bị đã tồn tại.";
 		}else{
 			$save = $this->conn->query($sql);
 			if($save){
@@ -247,7 +248,7 @@ Class Master extends DBConnection {
 	}
 	function update_status(){
 		extract($_POST);
-		$update = $this->conn->query("UPDATE `booking_list` set status  = '{$status}' where id = '{$id}'");
+		$update = $this->conn->query("UPDATE `booking_list` set status  = '{$status}', da_tra = '{$da_tra}' where id = '{$id}'");
 		if($update){
 			$resp['status'] = 'success';
 			$resp['msg'] = "Trạng thái của yêu cầu đã được cập nhật.";

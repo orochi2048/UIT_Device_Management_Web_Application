@@ -1,66 +1,101 @@
-<!DOCTYPE html>
-<head>
-  <title>Test Email</title>
-  <style>
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 70%;
-      margin: auto;
-    }
-    form input, form textarea, form button {
-      padding: 15px;
-      margin-bottom: 15px;
-      outline: none;
-      border: none;
-      background-color: #ddd;
-    }
-    form button {
-      background-color: #333;
-      color: #fff;
-      cursor: pointer;
-    }
-    h1 {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <h1>Test Email Javascript</h1>
-  <form class="email_form" method="#">
-    <input class="name" type="text" placeholder="Tên" />
-    <input class="email" type="email" placeholder="Email" />
-    <textarea class="msg" cols="5" rows="5" placeholder="Tin nhắn của bạn"></textarea>
-    <button type="submit">Send</button>
-  </form>
+<?php
+require 'vendor/autoload.php';
+require_once('./config.php');
 
-  <!-- SMTPJS v3 -->
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script>
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    const form = document.querySelector('.email_form');
-    
-    //function to send email when click on Submit button
-    function sendEmailMsg(e){
-      e.preventDefault();
-        const name = document.querySelector('.name'),
-              email = document.querySelector('.email'),
-              msg = document.querySelector('.msg');
+//Create a new PHPMailer instance
+$mail = new PHPMailer();
 
-      // Sending email function
-      Email.send({
-        SecureToken : "f4907742-9f91-4924-b56b-95dc5d3bed67",
-        To : '20520964@gm.uit.edu.vn',
-        From : email.value,
-        Subject : "Được ăn cả, ngã về không",
-        Body : msg.value
-      }).then(
-        message => alert(message)
-      );
+//Tell PHPMailer to use SMTP
+$mail->isSMTP();
+
+//Enable SMTP debugging
+//SMTP::DEBUG_OFF = off (for production use)
+//SMTP::DEBUG_CLIENT = client messages
+//SMTP::DEBUG_SERVER = client and server messages
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+//Set the hostname of the mail server
+$mail->Host = 'smtp.gmail.com';
+//Use `$mail->Host = gethostbyname('smtp.gmail.com');`
+//if your network does not support SMTP over IPv6,
+//though this may cause issues with TLS
+
+//Set the SMTP port number:
+// - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
+// - 587 for SMTP+STARTTLS
+$mail->Port = 465;
+
+//Set the encryption mechanism to use:
+// - SMTPS (implicit TLS on port 465) or
+// - STARTTLS (explicit TLS on port 587)
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
+//Whether to use SMTP authentication
+$mail->SMTPAuth = true;
+
+//Username to use for SMTP authentication - use full email address for gmail
+$mail->Username = 'lephatanhkiet2002@gmail.com';
+
+//Password to use for SMTP authentication
+$mail->Password = 'Bietchetlien2002!';
+
+//Set who the message is to be sent from
+//Note that with gmail you can only use your account address (same as `Username`)
+//or predefined aliases that you have configured within your account.
+//Do not use user-submitted addresses in here
+$mail->setFrom('lephatanhkiet2002@gmail.com');
+
+//Set an alternative reply-to address
+//This is a good place to put user-submitted addresses
+// $mail->addReplyTo('replyto@example.com', 'First Last');
+
+//Set who the message is to be sent to
+$mail->addAddress('20520964@gm.uit.edu.vn');
+
+//Set the subject line
+$mail->Subject = 'PHPMailer GMail SMTP test';
+
+//Read an HTML message body from an external file, convert referenced images to embedded,
+//convert HTML into a basic plain-text alternative body
+$mail->msgHTML(file_get_contents('mail_content.html'), __DIR__);
+
+//Replace the plain text body with one created manually
+$mail->AltBody = 'Tin nhắn này cho biết mail đã được gửi thành công';
+
+//Attach an image file
+$mail->addAttachment('test.jpg');
+
+//send the message, check for errors
+if (!$mail->send()) {
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message sent!';
+    //Section 2: IMAP
+    //Uncomment these to save your message in the 'Sent Mail' folder.
+    if (save_mail($mail)) {
+        echo "Message saved!";
     }
+}
 
-    // event listener submit
-    form.addEventListener('submit', sendEmailMsg);
+//Section 2: IMAP
+//IMAP commands requires the PHP IMAP Extension, found at: https://php.net/manual/en/imap.setup.php
+//Function to call which uses the PHP imap_*() functions to save messages: https://php.net/manual/en/book.imap.php
+//You can use imap_getmailboxes($imapStream, '/imap/ssl', '*' ) to get a list of available folders or labels, this can
+//be useful if you are trying to get this working on a non-Gmail IMAP server.
+function save_mail($mail)
+{
+    //You can change 'Sent Mail' to any other folder or tag
+    $path = '{imap.gmail.com:993/imap/ssl}[Gmail]/Sent Mail';
 
-  </script>
-</body>
+    //Tell your server to open an IMAP connection using the same username and password as you used for SMTP
+    $imapStream = imap_open($path, $mail->Username, $mail->Password);
+
+    $result = imap_append($imapStream, $path, $mail->getSentMIMEMessage());
+    imap_close($imapStream);
+
+    return $result;
+}

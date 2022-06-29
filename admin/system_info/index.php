@@ -42,6 +42,10 @@
 				<textarea type="text" class="form-control form-control-sm summernote" name="content[welcome]" id="welcome"><?php echo  is_file(base_app.'welcome.html') ? file_get_contents(base_app.'welcome.html') : '' ?></textarea>
 			</div>
 			<div class="form-group">
+				<label for="content[mail_content]" class="control-label">Nội dung gửi email thông tin mượn thiết bị</label>
+				<textarea type="text" class="form-control form-control-sm summernote" name="content[mail_content]" id="mail_content"><?php echo  is_file(base_app.'mail_content.html') ? file_get_contents(base_app.'mail_content.html') : '' ?></textarea>
+			</div>
+			<div class="form-group">
 				<label for="content[about_us]" class="control-label">Về chúng tôi</label>
 				<textarea type="text" class="form-control form-control-sm summernote" name="content[about_us]" id="about_us"><?php echo  is_file(base_app.'about_us.html') ? file_get_contents(base_app.'about_us.html') : '' ?></textarea>
 			</div>

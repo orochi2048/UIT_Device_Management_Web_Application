@@ -27,10 +27,15 @@ if(isset($_GET['id'])){
                 <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Đã duyệt</option>
                 <option value="2" <?= isset($status) && $status == 2 ? "selected" : "" ?>>Đã hủy</option>
             </select>
+            <label for="da_tra" class="control-label text-navy">Đã trả hay chưa?</label>
+            <select name="da_tra" id="da_tra" class="form-control form-control-border" required>
+                <option value="0" <?= isset($da_tra) && $da_tra == 0 ? "selected" : "" ?>>Chưa trả</option>
+                <option value="1" <?= isset($da_tra) && $da_tra == 1 ? "selected" : "" ?>>Đã trả</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="remarks" class="control-label text-navy">Lý do</label>
-            <textarea name="remarks" id="remarks" rows="3" class="form-control form-control-sm rounded-0" style="resize:none" placeholder="Write your remarks here."><?= isset($remarks) ? $remarks : '' ?></textarea>
+            <textarea name="remarks" id="remarks" rows="3" class="form-control form-control-sm rounded-0" style="resize:none" placeholder="Điền lý do của bạn vào đây."><?= isset($remarks) ? $remarks : '' ?></textarea>
         </div>
     </form>
 </div>

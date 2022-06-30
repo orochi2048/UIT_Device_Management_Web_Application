@@ -188,7 +188,7 @@ Class Master extends DBConnection {
 		if($del){
 			$resp['status'] = 'success';
 			$this->settings->set_flashdata('success',"Yêu cầu mượn đã bị xóa.");
-			$this->conn->query("DELETE FROM `booking_details` FROM where booking_id = '{$id}'");
+			$this->conn->query("DELETE FROM `booking_details` where booking_id = '{$id}'");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;

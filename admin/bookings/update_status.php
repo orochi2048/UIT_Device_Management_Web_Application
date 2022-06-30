@@ -34,8 +34,8 @@ if(isset($_GET['id'])){
             </select>
         </div>
         <div class="form-group">
-            <label for="remarks" class="control-label text-navy">Lý do</label>
-            <textarea name="remarks" id="remarks" rows="3" class="form-control form-control-sm rounded-0" style="resize:none" placeholder="Điền lý do của bạn vào đây."><?= isset($remarks) ? $remarks : '' ?></textarea>
+            <label for="remarks" class="control-label text-navy">Ghi chú</label>
+            <textarea name="remarks" id="remarks" rows="3" class="form-control form-control-sm rounded-0" style="resize:none" placeholder="Điền ghi chú của bạn vào đây."><?= isset($remarks) ? $remarks : '' ?></textarea>
         </div>
     </form>
 </div>

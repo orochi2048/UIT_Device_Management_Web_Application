@@ -114,7 +114,7 @@ Class Users extends DBConnection {
 		$qry = $this->conn->query("DELETE FROM users where id = $id");
 		if($qry){
 			$avatar = explode("?",$avatar)[0];
-			$this->settings->set_flashdata('success','Thông ti người dùng đã bị xóa.');
+			$this->settings->set_flashdata('success','Thông tin người dùng đã bị xóa.');
 			if(is_file(base_app.$avatar))
 				unlink(base_app.$avatar);
 			$resp['status'] = 'success';

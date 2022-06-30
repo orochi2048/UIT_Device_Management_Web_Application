@@ -133,6 +133,8 @@
 	$(document).ready(function(){
 		 $('.summernote').summernote({
 		        height: '60vh',
+				codeviewFilter: false,
+				codeviewIframeFilter: true,
 		        toolbar: [
 		            [ 'style', [ 'style' ] ],
 		            [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear'] ],
@@ -141,7 +143,7 @@
 		            [ 'color', [ 'color' ] ],
 		            [ 'para', [ 'ol', 'ul', 'paragraph', 'height' ] ],
 		            [ 'table', [ 'table' ] ],
-					['insert', ['link', 'picture']],
+					['insert', ['link', 'picture', 'table', 'hr']],
 		            [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
 		        ]
 		    })

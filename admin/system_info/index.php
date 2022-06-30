@@ -143,7 +143,7 @@
 		            [ 'color', [ 'color' ] ],
 		            [ 'para', [ 'ol', 'ul', 'paragraph', 'height' ] ],
 		            [ 'table', [ 'table' ] ],
-					['insert', ['link', 'picture', 'table', 'hr']],
+					['insert', ['link', 'picture', 'video', 'hr']],
 		            [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
 		        ]
 		    })
